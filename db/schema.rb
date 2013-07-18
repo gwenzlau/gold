@@ -11,7 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718040704) do
+ActiveRecord::Schema.define(:version => 20130718043727) do
+
+# Could not dump table "posts" because of following StandardError
+#   Unknown type 'photo' for column 'photo_url'
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
