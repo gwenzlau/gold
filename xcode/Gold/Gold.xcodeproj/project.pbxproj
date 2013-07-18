@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A46A7DD817983ED9002937F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A7DD717983ED9002937F3 /* UIKit.framework */; };
+		A46A7DDA17983ED9002937F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A7DD917983ED9002937F3 /* Foundation.framework */; };
+		A46A7DDC17983ED9002937F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46A7DDB17983ED9002937F3 /* CoreGraphics.framework */; };
+		A46A7DE217983ED9002937F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A46A7DE017983ED9002937F3 /* InfoPlist.strings */; };
+		A46A7DE417983ED9002937F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A46A7DE317983ED9002937F3 /* main.m */; };
+		A46A7DE817983ED9002937F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A46A7DE717983ED9002937F3 /* AppDelegate.m */; };
+		A46A7DEA17983ED9002937F3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A46A7DE917983ED9002937F3 /* Default.png */; };
+		A46A7DEC17983ED9002937F3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A46A7DEB17983ED9002937F3 /* Default@2x.png */; };
+		A46A7DEE17983ED9002937F3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A46A7DED17983ED9002937F3 /* Default-568h@2x.png */; };
+		A4B518081798411600DC0C7A /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518071798411600DC0C7A /* IndexViewController.m */; };
+		A4B5180B1798434F00DC0C7A /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5180A1798434F00DC0C7A /* Post.m */; };
+		A4B5180E179843C500DC0C7A /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5180D179843C500DC0C7A /* APIClient.m */; };
+		A4B518121798489200DC0C7A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B518111798489200DC0C7A /* CoreLocation.framework */; };
+		A4B51818179850F300DC0C7A /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B51817179850F300DC0C7A /* Notifications.m */; };
+		A4B5181C1798522000DC0C7A /* NSDictionary+JSONValueParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5181B1798522000DC0C7A /* NSDictionary+JSONValueParsing.m */; };
+		A4B518201798530800DC0C7A /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5181F1798530800DC0C7A /* ProgressView.m */; };
+		A4B51826179854BC00DC0C7A /* marko-nophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B51825179854BC00DC0C7A /* marko-nophoto.png */; };
+		A4B5182C1798585F00DC0C7A /* AddPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5182B1798585F00DC0C7A /* AddPhotoViewController.m */; };
+		A4B5182E1798586D00DC0C7A /* AddPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */; };
+		DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225FE81F6304353B87B3356 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6225FE81F6304353B87B3356 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A46A7DD417983ED9002937F3 /* Gold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gold.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A46A7DD717983ED9002937F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A46A7DD917983ED9002937F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A46A7DDB17983ED9002937F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A46A7DDF17983ED9002937F3 /* Gold-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gold-Info.plist"; sourceTree = "<group>"; };
+		A46A7DE117983ED9002937F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A46A7DE317983ED9002937F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A46A7DE517983ED9002937F3 /* Gold-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gold-Prefix.pch"; sourceTree = "<group>"; };
+		A46A7DE617983ED9002937F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A46A7DE717983ED9002937F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A46A7DE917983ED9002937F3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A46A7DEB17983ED9002937F3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A46A7DED17983ED9002937F3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A4B518061798411600DC0C7A /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = ../../Gold/Gold/IndexViewController.h; sourceTree = "<group>"; };
+		A4B518071798411600DC0C7A /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = ../../Gold/Gold/IndexViewController.m; sourceTree = "<group>"; };
+		A4B518091798434F00DC0C7A /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = ../../Gold/Gold/Post.h; sourceTree = "<group>"; };
+		A4B5180A1798434F00DC0C7A /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Post.m; path = ../../Gold/Gold/Post.m; sourceTree = "<group>"; };
+		A4B5180C179843C500DC0C7A /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = ../../Gold/Gold/APIClient.h; sourceTree = "<group>"; };
+		A4B5180D179843C500DC0C7A /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = ../../Gold/Gold/APIClient.m; sourceTree = "<group>"; };
+		A4B518111798489200DC0C7A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A4B51816179850F300DC0C7A /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Notifications.h; path = ../../Gold/Gold/Notifications.h; sourceTree = "<group>"; };
+		A4B51817179850F300DC0C7A /* Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Notifications.m; path = ../../Gold/Gold/Notifications.m; sourceTree = "<group>"; };
+		A4B518191798522000DC0C7A /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		A4B5181A1798522000DC0C7A /* NSDictionary+JSONValueParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONValueParsing.h"; sourceTree = "<group>"; };
+		A4B5181B1798522000DC0C7A /* NSDictionary+JSONValueParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONValueParsing.m"; sourceTree = "<group>"; };
+		A4B5181E1798530800DC0C7A /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressView.h; path = ../../Gold/Gold/ProgressView.h; sourceTree = "<group>"; };
+		A4B5181F1798530800DC0C7A /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressView.m; path = ../../Gold/Gold/ProgressView.m; sourceTree = "<group>"; };
+		A4B51825179854BC00DC0C7A /* marko-nophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marko-nophoto.png"; sourceTree = "<group>"; };
+		A4B5182A1798585F00DC0C7A /* AddPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddPhotoViewController.h; path = ../../Gold/Gold/AddPhotoViewController.h; sourceTree = "<group>"; };
+		A4B5182B1798585F00DC0C7A /* AddPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddPhotoViewController.m; path = ../../Gold/Gold/AddPhotoViewController.m; sourceTree = "<group>"; };
+		A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddPhotoStoryboard.storyboard; path = ../../Gold/Gold/AddPhotoStoryboard.storyboard; sourceTree = "<group>"; };
+		F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A46A7DD117983ED9002937F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B518121798489200DC0C7A /* CoreLocation.framework in Frameworks */,
+				A46A7DD817983ED9002937F3 /* UIKit.framework in Frameworks */,
+				A46A7DDA17983ED9002937F3 /* Foundation.framework in Frameworks */,
+				A46A7DDC17983ED9002937F3 /* CoreGraphics.framework in Frameworks */,
+				DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A46A7DCB17983ED9002937F3 = {
+			isa = PBXGroup;
+			children = (
+				A46A7DDD17983ED9002937F3 /* Gold */,
+				A46A7DD617983ED9002937F3 /* Frameworks */,
+				A46A7DD517983ED9002937F3 /* Products */,
+				F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		A46A7DD517983ED9002937F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A46A7DD417983ED9002937F3 /* Gold.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A46A7DD617983ED9002937F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4B518111798489200DC0C7A /* CoreLocation.framework */,
+				A46A7DD717983ED9002937F3 /* UIKit.framework */,
+				A46A7DD917983ED9002937F3 /* Foundation.framework */,
+				A46A7DDB17983ED9002937F3 /* CoreGraphics.framework */,
+				6225FE81F6304353B87B3356 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A46A7DDD17983ED9002937F3 /* Gold */ = {
+			isa = PBXGroup;
+			children = (
+				A4B5180F1798455A00DC0C7A /* API */,
+				A4B518241798542900DC0C7A /* Help */,
+				A46A7DE617983ED9002937F3 /* AppDelegate.h */,
+				A46A7DE717983ED9002937F3 /* AppDelegate.m */,
+				A4B518291798550B00DC0C7A /* Controllers */,
+				A4B51810179846B700DC0C7A /* Models */,
+				A4B5181D179852F400DC0C7A /* Views */,
+				A4B51827179854C000DC0C7A /* Resources */,
+				A46A7DDE17983ED9002937F3 /* Supporting Files */,
+			);
+			path = Gold;
+			sourceTree = "<group>";
+		};
+		A46A7DDE17983ED9002937F3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A46A7DDF17983ED9002937F3 /* Gold-Info.plist */,
+				A46A7DE017983ED9002937F3 /* InfoPlist.strings */,
+				A46A7DE317983ED9002937F3 /* main.m */,
+				A46A7DE517983ED9002937F3 /* Gold-Prefix.pch */,
+				A46A7DE917983ED9002937F3 /* Default.png */,
+				A46A7DEB17983ED9002937F3 /* Default@2x.png */,
+				A46A7DED17983ED9002937F3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4B5180F1798455A00DC0C7A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A4B5180C179843C500DC0C7A /* APIClient.h */,
+				A4B5180D179843C500DC0C7A /* APIClient.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		A4B51810179846B700DC0C7A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4B518091798434F00DC0C7A /* Post.h */,
+				A4B5180A1798434F00DC0C7A /* Post.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A4B5181D179852F400DC0C7A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A4B5181E1798530800DC0C7A /* ProgressView.h */,
+				A4B5181F1798530800DC0C7A /* ProgressView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A4B518241798542900DC0C7A /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				A4B51816179850F300DC0C7A /* Notifications.h */,
+				A4B51817179850F300DC0C7A /* Notifications.m */,
+				A4B518191798522000DC0C7A /* Helpers.h */,
+				A4B5181A1798522000DC0C7A /* NSDictionary+JSONValueParsing.h */,
+				A4B5181B1798522000DC0C7A /* NSDictionary+JSONValueParsing.m */,
+			);
+			name = Help;
+			sourceTree = "<group>";
+		};
+		A4B51827179854C000DC0C7A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4B51828179854CB00DC0C7A /* images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A4B51828179854CB00DC0C7A /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A4B51825179854BC00DC0C7A /* marko-nophoto.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		A4B518291798550B00DC0C7A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A4B518061798411600DC0C7A /* IndexViewController.h */,
+				A4B518071798411600DC0C7A /* IndexViewController.m */,
+				A4B5182A1798585F00DC0C7A /* AddPhotoViewController.h */,
+				A4B5182B1798585F00DC0C7A /* AddPhotoViewController.m */,
+				A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A46A7DD317983ED9002937F3 /* Gold */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A46A7DF117983ED9002937F3 /* Build configuration list for PBXNativeTarget "Gold" */;
+			buildPhases = (
+				2F631DE5ACEF43B3B479D67F /* Check Pods Manifest.lock */,
+				A46A7DD017983ED9002937F3 /* Sources */,
+				A46A7DD117983ED9002937F3 /* Frameworks */,
+				A46A7DD217983ED9002937F3 /* Resources */,
+				D28B366C2C2B40ACA677D7DC /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gold;
+			productName = Gold;
+			productReference = A46A7DD417983ED9002937F3 /* Gold.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A46A7DCC17983ED9002937F3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = marko;
+			};
+			buildConfigurationList = A46A7DCF17983ED9002937F3 /* Build configuration list for PBXProject "Gold" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A46A7DCB17983ED9002937F3;
+			productRefGroup = A46A7DD517983ED9002937F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A46A7DD317983ED9002937F3 /* Gold */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A46A7DD217983ED9002937F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A46A7DE217983ED9002937F3 /* InfoPlist.strings in Resources */,
+				A46A7DEA17983ED9002937F3 /* Default.png in Resources */,
+				A46A7DEC17983ED9002937F3 /* Default@2x.png in Resources */,
+				A46A7DEE17983ED9002937F3 /* Default-568h@2x.png in Resources */,
+				A4B51826179854BC00DC0C7A /* marko-nophoto.png in Resources */,
+				A4B5182E1798586D00DC0C7A /* AddPhotoStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F631DE5ACEF43B3B479D67F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D28B366C2C2B40ACA677D7DC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A46A7DD017983ED9002937F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A46A7DE417983ED9002937F3 /* main.m in Sources */,
+				A46A7DE817983ED9002937F3 /* AppDelegate.m in Sources */,
+				A4B518081798411600DC0C7A /* IndexViewController.m in Sources */,
+				A4B5180B1798434F00DC0C7A /* Post.m in Sources */,
+				A4B5180E179843C500DC0C7A /* APIClient.m in Sources */,
+				A4B51818179850F300DC0C7A /* Notifications.m in Sources */,
+				A4B5181C1798522000DC0C7A /* NSDictionary+JSONValueParsing.m in Sources */,
+				A4B518201798530800DC0C7A /* ProgressView.m in Sources */,
+				A4B5182C1798585F00DC0C7A /* AddPhotoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A46A7DE017983ED9002937F3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A46A7DE117983ED9002937F3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A46A7DEF17983ED9002937F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A46A7DF017983ED9002937F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A46A7DF217983ED9002937F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gold/Gold-Prefix.pch";
+				INFOPLIST_FILE = "Gold/Gold-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A46A7DF317983ED9002937F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gold/Gold-Prefix.pch";
+				INFOPLIST_FILE = "Gold/Gold-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A46A7DCF17983ED9002937F3 /* Build configuration list for PBXProject "Gold" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A46A7DEF17983ED9002937F3 /* Debug */,
+				A46A7DF017983ED9002937F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A46A7DF117983ED9002937F3 /* Build configuration list for PBXNativeTarget "Gold" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A46A7DF217983ED9002937F3 /* Debug */,
+				A46A7DF317983ED9002937F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A46A7DCC17983ED9002937F3 /* Project object */;
+}

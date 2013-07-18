@@ -1,0 +1,6 @@
+platform :ios, "6.0"
+
+xcodeproj 'xcode/gold/Gold.xcodeproj'
+pod 'AFNetworking'
+pod 'BlocksKit'
+pod 'KKGridView'
