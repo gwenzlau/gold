@@ -34,4 +34,7 @@ Gold::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #In production- Change host to actual HOST!
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
