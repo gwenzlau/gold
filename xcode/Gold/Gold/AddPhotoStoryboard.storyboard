@@ -22,12 +22,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose a photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd4-Gg-pEV">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPA-Kc-yha">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="photo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="mPA-Kc-yha">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="63" id="OcQ-Dm-c6t"/>
                                                         <constraint firstAttribute="width" constant="85" id="UJe-xd-jy9"/>
@@ -37,10 +32,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="mPA-Kc-yha" firstAttribute="leading" secondItem="aYR-EQ-GFI" secondAttribute="leading" constant="36" id="5a5-KR-R1E"/>
-                                            <constraint firstItem="mPA-Kc-yha" firstAttribute="centerY" secondItem="vd4-Gg-pEV" secondAttribute="centerY" type="default" id="BGS-Vs-1TQ"/>
+                                            <constraint firstItem="mPA-Kc-yha" firstAttribute="centerX" secondItem="aYR-EQ-GFI" secondAttribute="centerX" type="default" id="3SS-az-Cmb"/>
                                             <constraint firstItem="mPA-Kc-yha" firstAttribute="top" secondItem="aYR-EQ-GFI" secondAttribute="top" constant="10" id="PUE-a1-Uju"/>
-                                            <constraint firstItem="vd4-Gg-pEV" firstAttribute="leading" secondItem="aYR-EQ-GFI" secondAttribute="leading" constant="155" id="VH4-OD-eGe"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -90,6 +83,21 @@
             <point key="canvasLocation" x="223" y="-267"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photo_icon.png" width="237" height="212"/>
+    </resources>
+    <classes>
+        <class className="AddPhotoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -73,7 +73,7 @@
                                   {
                                       [formData appendPartWithFileData:self.photoData
                                                                   name:@"post[photo]"
-                                                              fileName:@"photopost.png"
+                                                              fileName:@""
                                                               mimeType:@"image/png"];
                                   }];
 //below, I changed the NSInteger to NSUInteger to fix the error- this differs from BL...
