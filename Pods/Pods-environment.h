@@ -25,6 +25,12 @@
 // Please contact the author.
 // Version: 0.6.8.2.
 
+// SSPullToRefresh
+#define COCOAPODS_POD_AVAILABLE_SSPullToRefresh
+#define COCOAPODS_VERSION_MAJOR_SSPullToRefresh 1
+#define COCOAPODS_VERSION_MINOR_SSPullToRefresh 1
+#define COCOAPODS_VERSION_PATCH_SSPullToRefresh 2
+
 // libffi
 #define COCOAPODS_POD_AVAILABLE_libffi
 #define COCOAPODS_VERSION_MAJOR_libffi 3

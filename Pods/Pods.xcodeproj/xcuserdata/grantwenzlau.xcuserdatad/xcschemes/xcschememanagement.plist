@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>Pods-SSPullToRefresh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Pods-libffi.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,6 +37,26 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0F4F9F864C9749F3A825CDDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>123A4A827E4F450382E0046F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3230066F5F254123AE0301FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7CBB4E9DF2A74D298178FE2C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7EBC3C468A474B749A80B00B</key>
 		<dict>
 			<key>primary</key>
@@ -43,6 +68,16 @@
 			<true/>
 		</dict>
 		<key>89D7D472322E420DA266FCC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AB9B6A6E4803498099489C75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AF0C003119BF483E9CDFC45A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
