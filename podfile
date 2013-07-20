@@ -3,5 +3,5 @@ platform :ios, "6.0"
 xcodeproj 'xcode/gold/Gold.xcodeproj'
 pod 'AFNetworking'
 pod 'BlocksKit'
-pod 'KKGridView'
+pod 'ISO8601DateFormatter', '~> 0.6'
 pod 'SSPullToRefresh'

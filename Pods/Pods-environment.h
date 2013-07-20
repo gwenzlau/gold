@@ -18,12 +18,11 @@
 #define COCOAPODS_VERSION_MINOR_BlocksKit 8
 #define COCOAPODS_VERSION_PATCH_BlocksKit 2
 
-// KKGridView
-#define COCOAPODS_POD_AVAILABLE_KKGridView
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 0.6.8.2.
+// ISO8601DateFormatter
+#define COCOAPODS_POD_AVAILABLE_ISO8601DateFormatter
+#define COCOAPODS_VERSION_MAJOR_ISO8601DateFormatter 0
+#define COCOAPODS_VERSION_MINOR_ISO8601DateFormatter 6
+#define COCOAPODS_VERSION_PATCH_ISO8601DateFormatter 0
 
 // SSPullToRefresh
 #define COCOAPODS_POD_AVAILABLE_SSPullToRefresh

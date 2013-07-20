@@ -23,10 +23,15 @@
 		A4B51818179850F300DC0C7A /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B51817179850F300DC0C7A /* Notifications.m */; };
 		A4B5181C1798522000DC0C7A /* NSDictionary+JSONValueParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5181B1798522000DC0C7A /* NSDictionary+JSONValueParsing.m */; };
 		A4B518201798530800DC0C7A /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5181F1798530800DC0C7A /* ProgressView.m */; };
-		A4B51826179854BC00DC0C7A /* coffee-nophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B51825179854BC00DC0C7A /* coffee-nophoto.png */; };
+		A4B51826179854BC00DC0C7A /* marko-nophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B51825179854BC00DC0C7A /* marko-nophoto.png */; };
 		A4B5182C1798585F00DC0C7A /* AddPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5182B1798585F00DC0C7A /* AddPhotoViewController.m */; };
 		A4B5182E1798586D00DC0C7A /* AddPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */; };
 		A4B518301798727800DC0C7A /* photo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B5182F1798727800DC0C7A /* photo_icon.png */; };
+		A4B518321798800900DC0C7A /* AddNoteStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B518311798800900DC0C7A /* AddNoteStoryboard.storyboard */; };
+		A4B518351798802700DC0C7A /* AddNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518341798802700DC0C7A /* AddNoteViewController.m */; };
+		A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */; };
+		A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5183C1799F18600DC0C7A /* DetailViewController.m */; };
+		A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B5183D1799F18700DC0C7A /* DetailViewController.xib */; };
 		DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225FE81F6304353B87B3356 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -59,11 +64,19 @@
 		A4B5181B1798522000DC0C7A /* NSDictionary+JSONValueParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONValueParsing.m"; sourceTree = "<group>"; };
 		A4B5181E1798530800DC0C7A /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressView.h; path = ../../Gold/Gold/ProgressView.h; sourceTree = "<group>"; };
 		A4B5181F1798530800DC0C7A /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressView.m; path = ../../Gold/Gold/ProgressView.m; sourceTree = "<group>"; };
-		A4B51825179854BC00DC0C7A /* coffee-nophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coffee-nophoto.png"; sourceTree = "<group>"; };
+		A4B51825179854BC00DC0C7A /* marko-nophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marko-nophoto.png"; sourceTree = "<group>"; };
 		A4B5182A1798585F00DC0C7A /* AddPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddPhotoViewController.h; path = ../../Gold/Gold/AddPhotoViewController.h; sourceTree = "<group>"; };
 		A4B5182B1798585F00DC0C7A /* AddPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddPhotoViewController.m; path = ../../Gold/Gold/AddPhotoViewController.m; sourceTree = "<group>"; };
 		A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddPhotoStoryboard.storyboard; path = ../../Gold/Gold/AddPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		A4B5182F1798727800DC0C7A /* photo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_icon.png; sourceTree = "<group>"; };
+		A4B518311798800900DC0C7A /* AddNoteStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddNoteStoryboard.storyboard; path = ../../Gold/Gold/AddNoteStoryboard.storyboard; sourceTree = "<group>"; };
+		A4B518331798802700DC0C7A /* AddNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddNoteViewController.h; path = ../../Gold/Gold/AddNoteViewController.h; sourceTree = "<group>"; };
+		A4B518341798802700DC0C7A /* AddNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNoteViewController.m; path = ../../Gold/Gold/AddNoteViewController.m; sourceTree = "<group>"; };
+		A4B518381799BA0000DC0C7A /* NSDictionary+NonNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNull.h"; sourceTree = "<group>"; };
+		A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNull.m"; sourceTree = "<group>"; };
+		A4B5183B1799F18600DC0C7A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../../Gold/Gold/DetailViewController.h; sourceTree = "<group>"; };
+		A4B5183C1799F18600DC0C7A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../../Gold/Gold/DetailViewController.m; sourceTree = "<group>"; };
+		A4B5183D1799F18700DC0C7A /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController.xib; path = ../../Gold/Gold/DetailViewController.xib; sourceTree = "<group>"; };
 		F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -173,6 +186,8 @@
 		A4B518241798542900DC0C7A /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				A4B518381799BA0000DC0C7A /* NSDictionary+NonNull.h */,
+				A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */,
 				A4B51816179850F300DC0C7A /* Notifications.h */,
 				A4B51817179850F300DC0C7A /* Notifications.m */,
 				A4B518191798522000DC0C7A /* Helpers.h */,
@@ -194,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B5182F1798727800DC0C7A /* photo_icon.png */,
-				A4B51825179854BC00DC0C7A /* coffee-nophoto.png */,
+				A4B51825179854BC00DC0C7A /* marko-nophoto.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -204,6 +219,12 @@
 			children = (
 				A4B518061798411600DC0C7A /* IndexViewController.h */,
 				A4B518071798411600DC0C7A /* IndexViewController.m */,
+				A4B5183B1799F18600DC0C7A /* DetailViewController.h */,
+				A4B5183C1799F18600DC0C7A /* DetailViewController.m */,
+				A4B5183D1799F18700DC0C7A /* DetailViewController.xib */,
+				A4B518311798800900DC0C7A /* AddNoteStoryboard.storyboard */,
+				A4B518331798802700DC0C7A /* AddNoteViewController.h */,
+				A4B518341798802700DC0C7A /* AddNoteViewController.m */,
 				A4B5182A1798585F00DC0C7A /* AddPhotoViewController.h */,
 				A4B5182B1798585F00DC0C7A /* AddPhotoViewController.m */,
 				A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */,
@@ -268,9 +289,11 @@
 				A46A7DEA17983ED9002937F3 /* Default.png in Resources */,
 				A46A7DEC17983ED9002937F3 /* Default@2x.png in Resources */,
 				A46A7DEE17983ED9002937F3 /* Default-568h@2x.png in Resources */,
-				A4B51826179854BC00DC0C7A /* coffee-nophoto.png in Resources */,
+				A4B51826179854BC00DC0C7A /* marko-nophoto.png in Resources */,
 				A4B5182E1798586D00DC0C7A /* AddPhotoStoryboard.storyboard in Resources */,
 				A4B518301798727800DC0C7A /* photo_icon.png in Resources */,
+				A4B518321798800900DC0C7A /* AddNoteStoryboard.storyboard in Resources */,
+				A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +346,9 @@
 				A4B5181C1798522000DC0C7A /* NSDictionary+JSONValueParsing.m in Sources */,
 				A4B518201798530800DC0C7A /* ProgressView.m in Sources */,
 				A4B5182C1798585F00DC0C7A /* AddPhotoViewController.m in Sources */,
+				A4B518351798802700DC0C7A /* AddNoteViewController.m in Sources */,
+				A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */,
+				A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

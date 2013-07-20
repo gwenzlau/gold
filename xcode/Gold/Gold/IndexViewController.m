@@ -6,13 +6,18 @@
 //  Copyright (c) 2013 marko. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "IndexViewController.h"
 #import "Post.h"
 #import "Notifications.h"
+#import "DetailViewController.h"
 #import "SSPullToRefresh.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface IndexViewController ()
+static CLLocationDistance const kMapRegionSpanDistance = 5000;
 
+@interface IndexViewController () <CLLocationManagerDelegate>
+@property (strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *posts;
 
 @property (nonatomic, strong) SSPullToRefreshView *pullToRefreshView;
@@ -21,6 +26,7 @@
 @implementation IndexViewController
 
 @synthesize posts = _posts;
+@synthesize locationManager = _locationManager;
 @synthesize pullToRefreshView;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,17 +44,35 @@
     
     self.title = @"Marko";
     self.navigationItem.leftBarButtonItem = [self photoButton];
+    self.navigationItem.rightBarButtonItem = [self noteButton];
     
     [self listenForCreatedPosts];
-    [self loadPosts];
+    [self loadPosts: [self getLocation]];
     self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
+    
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    self.locationManager.delegate = self;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+//    self.locationManager.distanceFilter = 80.0f;
+//    [self.locationManager startUpdatingLocation];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.locationManager startUpdatingLocation];
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
 }
 
 - (void)listenForCreatedPosts {
@@ -62,18 +86,58 @@
     return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(addPhoto:)];
 }
 
+- (UIBarButtonItem *)noteButton {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(addNote:)];
+}
+
 - (void)refresh {
     [self.pullToRefreshView startLoading];
-    
+    [self loadPosts: [self getLocation]];
     [self.pullToRefreshView finishLoading];
 }
+
 
 - (void)pullToRefreshViewDidStartLoading:(SSPullToRefreshView *)view {
     [self refresh];
 }
 
-- (void)loadPosts {
-    [Post fetchNearbyPosts:^(NSArray *posts, NSError *error) {
+-(CLLocation *) getLocation{
+    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    CLLocation * location = [locationManager location];
+    return location;
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
+    [self loadPosts: [self getLocation]];
+    CLLocation *location = [locations objectAtIndex:0];
+    if (location) {
+        [Post savePostAtLocation:location withContent:@"Hello from Xcode" block:^(Post *post, NSError *error) {
+            NSLog(@"Block: %@", post);
+        }];
+        
+        [Post fetchNearbyPosts:location withBlock:^(NSArray *posts, NSError *error) {
+            self.posts;
+            NSLog(@"Recieved %d posts", posts.count);
+            [self.tableView reloadData];
+        }];
+        
+        [manager stopUpdatingLocation];
+    } else {
+        NSLog(@"Couldn't find any posts at this Location");
+    }
+}
+
+
+- (void) loadPosts:(CLLocation *)location {
+    [Post fetchNearbyPosts:location withBlock:^(NSArray *posts, NSError *error) {
         if (posts) {
             NSLog(@"Recieved %d posts", posts.count);
             self.posts = [NSMutableArray arrayWithArray:posts];
@@ -94,6 +158,14 @@
                                                                  bundle:nil];
 
     id vc = [addPhotoStoryboard instantiateInitialViewController];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)addNote:(id)sender {
+    UIStoryboard *addNoteStoryboard = [UIStoryboard storyboardWithName:@"AddNoteStoryboard"
+                                                                 bundle:nil];
+    
+    id vc = [addNoteStoryboard instantiateInitialViewController];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -134,14 +206,12 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
-    
     return cell;
 }
-
 
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     Post *post = [self.posts objectAtIndex:indexPath.row];
@@ -149,7 +219,18 @@
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.text = post.content;
-    cell.imageView.image = [UIImage imageNamed:@""];
+  //  cell.detailTextLabel.text = post.timestamp;
+   // cell.detailTextLabel.text = post.location;
+    
+    NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
+    UIImage *defaultImage = [UIImage imageNamed:@"marko-nophoto.png"];
+    
+    if (imageUrl) {
+        [cell.imageView setImageWithURL:imageUrl
+                            placeholderImage:defaultImage];
+    } else {
+        cell.imageView.image = nil /* if you want to see that it works   defaultImage  */;
+    }
 }
 
 /*
@@ -196,12 +277,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    
+     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

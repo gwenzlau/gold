@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SSPullToRefresh.h"
+#import <CoreLocation/CoreLocation.h>
 
 
-@interface IndexViewController : UITableViewController <SSPullToRefreshViewDelegate>
+@interface IndexViewController : UITableViewController < SSPullToRefreshViewDelegate, CLLocationManagerDelegate>
 
 @end

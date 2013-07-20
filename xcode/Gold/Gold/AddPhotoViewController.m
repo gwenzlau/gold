@@ -62,25 +62,25 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)save:(id)sender {
-    Post *post = [[Post alloc] init];
-    post.content = self.contentTextView.text;
-    post.photoData = UIImagePNGRepresentation(self.imageView.image);
-    
-    [self.view endEditing:YES];
-    
-    ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
-    
-    [post saveWithProgress:^(CGFloat progress) {
-        [progressView setProgress:progress];
-    } completion:^(BOOL success, NSError *error) {
-        [progressView dismiss];
-        if (success) {
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            NSLog(@"ERROR: %@", error);
-        }
-    }];
-}
+//- (void)save:(id)sender {
+//    Post *post = [[Post alloc] init];
+//    post.content = self.contentTextView.text;
+//    post.photoData = UIImagePNGRepresentation(self.imageView.image);
+//    
+//    [self.view endEditing:YES];
+//    
+//    ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
+//    
+//    [post saveWithProgress:^(CGFloat progress) {
+//        [progressView setProgress:progress];
+//    } completion:^(BOOL success, NSError *error) {
+//        [progressView dismiss];
+//        if (success) {
+//            [self.navigationController popViewControllerAnimated:YES];
+//        } else {
+//            NSLog(@"ERROR: %@", error);
+//        }
+//    }];
+//}
 
 @end

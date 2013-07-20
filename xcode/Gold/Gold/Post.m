@@ -11,23 +11,97 @@
 #import "BlocksKit.h"
 #import "APIClient.h"
 #import "NSDictionary+JSONValueParsing.h"
+#import "ISO8601DateFormatter.h"
 #import "Notifications.h"
+#import "NSDictionary+NonNull.h"
+
+static NSDate * NSDateFromISO8601String(NSString *string) {
+    static ISO8601DateFormatter *_iso8601DateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _iso8601DateFormatter = [[ISO8601DateFormatter alloc] init];
+    });
+    
+    if (!string) {
+        return nil;
+    }
+    
+    return [_iso8601DateFormatter dateFromString:string];
+}
+
+static NSString * NSStringFromCoordinate(CLLocationCoordinate2D coordinate) {
+    return [ NSString stringWithFormat:@"(%f, %f)", coordinate.latitude, coordinate.longitude];
+}
+
+static NSString * NSStringFromDate(NSDate *date) {
+    static NSDateFormatter *_dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        [_dateFormatter setLocale:[NSLocale currentLocale]];
+        [_dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        [_dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        [_dateFormatter setDoesRelativeDateFormatting:YES];
+    });
+    
+    return [_dateFormatter stringFromDate:date];
+}
+
 
 @implementation Post
 
-@synthesize content, thumbnailUrl, photoData, largeUrl;
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    self.content = [dictionary valueForKey:@"content"];
+    self.location = [[CLLocation alloc] initWithLatitude:[[dictionary nonNullValueForKeyPath:@"lat"] doubleValue] longitude:[[dictionary nonNullValueForKeyPath:@"lng"] doubleValue]];
+    
+    return self;
+}
 
-+ (void) fetchNearbyPosts:(void (^)(NSArray *, NSError *))completionBlock {
-    [[APIClient sharedClient] getPath:@"/posts.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//I added cllocation here and withBlock... and nsDi params
+//+ (void) fetchNearbyPosts:(CLLocation *)location
+//                withBlock:(void (^)(NSArray *, NSError *))completionBlock {
+//    
+//    NSDictionary *parameters = @{
+//                                 @"lat": @(location.coordinate.latitude),
+//                                 @"lng": @(location.coordinate.longitude)
+//                                 };
+//    
+//    [[APIClient sharedClient] getPath:@"/posts.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        if (operation.response.statusCode ==200) {
+//            NSArray *posts = [Post postsWithJSON:responseObject];
+//            completionBlock(posts, nil);
+//        } else {
+//            NSLog(@"received an HTTP %d: %@", operation.response.statusCode, responseObject);
+//            completionBlock(nil, nil);
+//        }
+//    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        completionBlock(nil, error);
+//    }];
+//}
++ (void)fetchNearbyPosts:(CLLocation *)location
+          withBlock:(void (^)(NSArray *posts, NSError *error))completionBlock
+{
+    NSDictionary *parameters = @{
+                                 @"lat": @(location.coordinate.latitude),
+                                 @"lng": @(location.coordinate.longitude)
+                                 };
+    
+    [[APIClient sharedClient] getPath:@"/posts" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (operation.response.statusCode ==200) {
-            NSArray *posts = [Post postsWithJSON:responseObject];
-            completionBlock(posts, nil);
+        NSArray *posts = [Post postsWithJSON:responseObject];
+        completionBlock(posts, nil);
         } else {
-            NSLog(@"received an HTTP %d: %@", operation.response.statusCode, responseObject);
+            NSLog(@"Recieved an HTTP %d: %@", operation.response.statusCode, responseObject);
             completionBlock(nil, nil);
         }
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completionBlock(nil, error);
+        NSLog(@"Error: %@", error);
     }];
 }
 
@@ -54,17 +128,26 @@
    // NSString *photoKey = IsRetina() ? @"thumb_retina" : @"thumb";
     NSDictionary *thumbDictionary = [photoDictionary objectForKey:@"thumbnailUrl"];
     self.thumbnailUrl = [thumbDictionary stringForKey:@"url"];
+    
+    NSDictionary *locationDictionary = [dictionary objectForKey:@"location"];
+    self.location = [[CLLocation alloc] initWithLatitude:[[locationDictionary valueForKey:@"lat"] doubleValue] longitude:[[locationDictionary valueForKey:@"lng"] doubleValue]];
 }
 
-- (void)saveWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock {
-    [self saveWithProgress:nil completion:completionBlock];
+- (void)saveWithCompletion:(CLLocation *)location withBlock:(void (^)(BOOL, NSError *))completionBlock {
+//- (void)saveWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock {
+   // [self saveWithProgress:nil completion:completionBlock];
+    [self saveWithProgress:location withBlock:nil completion:completionBlock];
 }
 
-- (void)saveWithProgress:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock {
+- (void)saveWithProgress:(CLLocation *)location withBlock:(void (^)(CGFloat))progressBlock completion:(void (^)(BOOL, NSError *))completionBlock {
+//- (void)saveWithProgress:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock {
+    
     if (!self.content) self.content = @"";
     
     NSDictionary *params = @{
-                             @"post[content]" : self.content
+                             @"post[content]" : self.content,
+                             @"lat": @(location.coordinate.latitude),
+                             @"lng": @(location.coordinate.longitude)
                              };
     NSURLRequest *postRequest = [[APIClient sharedClient] multipartFormRequestWithMethod:@"POST"
                                                                                     path:@"/posts"
@@ -99,6 +182,30 @@
     
     [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
 };
+
++ (void)savePostAtLocation:(CLLocation *)location
+               withContent:(NSString *)content
+                     block:(void (^)(Post *, NSError *))block
+{
+//  if (!self.content) self.content = @"";
+    
+    NSDictionary *params = @{
+                             @"post[content]" : content,
+                             @"post[lat]" : @(location.coordinate.latitude),
+                             @"post[lng]" : @(location.coordinate.longitude)
+                                  };
+    [[APIClient sharedClient] postPath:@"/posts" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Post *post = [[Post alloc] initWithDictionary:responseObject];
+        if (block) {
+            block(post, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            block(nil, error);
+        }
+    }];
+}
+
 
 - (void)notifyCreated {
     [[NSNotificationCenter defaultCenter] postNotificationName:PostCreatedNotification
