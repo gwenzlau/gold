@@ -47,7 +47,6 @@ static NSString * NSStringFromDate(NSDate *date) {
     return [_dateFormatter stringFromDate:date];
 }
 
-
 @implementation Post
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
@@ -62,27 +61,6 @@ static NSString * NSStringFromDate(NSDate *date) {
     return self;
 }
 
-//I added cllocation here and withBlock... and nsDi params
-//+ (void) fetchNearbyPosts:(CLLocation *)location
-//                withBlock:(void (^)(NSArray *, NSError *))completionBlock {
-//    
-//    NSDictionary *parameters = @{
-//                                 @"lat": @(location.coordinate.latitude),
-//                                 @"lng": @(location.coordinate.longitude)
-//                                 };
-//    
-//    [[APIClient sharedClient] getPath:@"/posts.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        if (operation.response.statusCode ==200) {
-//            NSArray *posts = [Post postsWithJSON:responseObject];
-//            completionBlock(posts, nil);
-//        } else {
-//            NSLog(@"received an HTTP %d: %@", operation.response.statusCode, responseObject);
-//            completionBlock(nil, nil);
-//        }
-//    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        completionBlock(nil, error);
-//    }];
-//}
 + (void)fetchNearbyPosts:(CLLocation *)location
           withBlock:(void (^)(NSArray *posts, NSError *error))completionBlock
 {
@@ -133,25 +111,32 @@ static NSString * NSStringFromDate(NSDate *date) {
     self.location = [[CLLocation alloc] initWithLatitude:[[locationDictionary valueForKey:@"lat"] doubleValue] longitude:[[locationDictionary valueForKey:@"lng"] doubleValue]];
 }
 
-- (void)saveWithCompletion:(CLLocation *)location withBlock:(void (^)(BOOL, NSError *))completionBlock {
+- (void)saveWithCompletionAtLocation:(CLLocation *)location withBlock:(void (^)(BOOL, NSError *))completionBlock {
 //- (void)saveWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock {
    // [self saveWithProgress:nil completion:completionBlock];
-    [self saveWithProgress:location withBlock:nil completion:completionBlock];
+    [self saveWithProgressAtLocation:location withBlock:nil completion:completionBlock];
 }
 
-- (void)saveWithProgress:(CLLocation *)location withBlock:(void (^)(CGFloat))progressBlock completion:(void (^)(BOOL, NSError *))completionBlock {
+- (void)saveWithProgressAtLocation:(CLLocation *)location
+                         withBlock:(void (^)(CGFloat))progressBlock completion:(void (^)(BOOL, NSError *))completionBlock {
 //- (void)saveWithProgress:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock {
     
     if (!self.content) self.content = @"";
     
-    NSDictionary *params = @{
-                             @"post[content]" : self.content,
-                             @"lat": @(location.coordinate.latitude),
-                             @"lng": @(location.coordinate.longitude)
-                             };
+//    NSDictionary *params = @{
+//                             @"post[content]" : self.content,
+//                             @"post[lat]": @(location.coordinate.latitude),
+//                             @"post[lng]": @(location.coordinate.longitude)
+//                             
+//                             };
+    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
+    [mutableParameters setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"post[lat]"];
+    [mutableParameters setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"post[lng]"];
+    [mutableParameters setObject:[NSString stringWithFormat:self.content] forKey:@"post[content]"];
+    
     NSURLRequest *postRequest = [[APIClient sharedClient] multipartFormRequestWithMethod:@"POST"
                                                                                     path:@"/posts"
-                                                                              parameters:params
+                                                                              parameters:mutableParameters
                                                                constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
                                   {
                                       [formData appendPartWithFileData:self.photoData
@@ -169,8 +154,8 @@ static NSString * NSStringFromDate(NSDate *date) {
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (operation.response.statusCode == 200 || operation.response.statusCode == 201) {
             NSLog(@"Created, %@", responseObject);
-            NSDictionary *updatedLatte = [responseObject objectForKey:@"post"];
-            [self updateFromJSON:updatedLatte];
+            NSDictionary *updatedPost = [responseObject objectForKey:@"post"];
+            [self updateFromJSON:updatedPost];
             [self notifyCreated];
             completionBlock(YES, nil);
         } else {
@@ -183,28 +168,34 @@ static NSString * NSStringFromDate(NSDate *date) {
     [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
 };
 
-+ (void)savePostAtLocation:(CLLocation *)location
-               withContent:(NSString *)content
-                     block:(void (^)(Post *, NSError *))block
-{
-//  if (!self.content) self.content = @"";
+- (void)savePostAtLocation:(CLLocation *)location
+    withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock {
+   // if (!self.content) self.content = @"";
     
     NSDictionary *params = @{
-                             @"post[content]" : content,
+                             @"post[content]" : self.content,
                              @"post[lat]" : @(location.coordinate.latitude),
                              @"post[lng]" : @(location.coordinate.longitude)
                                   };
+    
     [[APIClient sharedClient] postPath:@"/posts" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Post *post = [[Post alloc] initWithDictionary:responseObject];
-        if (block) {
-            block(post, nil);
+        if (operation.response.statusCode == 200 || operation.response.statusCode == 201) {
+            NSLog(@"Created, %@", responseObject);
+            NSDictionary *updatedPost = [responseObject objectForKey:@"post"];
+            [self updateFromJSON:updatedPost];
+            [self notifyCreated];
+            completionBlock(YES, nil);
+        } else {
+            completionBlock(NO, nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            block(nil, error);
-        }
+        completionBlock(NO, error);
     }];
+    
+   // [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
 }
+
 
 
 - (void)notifyCreated {

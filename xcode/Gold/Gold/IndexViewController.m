@@ -104,8 +104,8 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 -(CLLocation *) getLocation{
     CLLocationManager * locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 80.0f;
     [locationManager startUpdatingLocation];
     CLLocation * location = [locationManager location];
     return location;
@@ -118,21 +118,21 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 {
     [self loadPosts: [self getLocation]];
     CLLocation *location = [locations objectAtIndex:0];
-    if (location) {
-        [Post savePostAtLocation:location withContent:@"Hello from Xcode" block:^(Post *post, NSError *error) {
-            NSLog(@"Block: %@", post);
-        }];
-        
+//    if (location) {
+//        [Post savePostAtLocation:location withContent:@"Hello from Xcode" block:^(Post *post, NSError *error) {
+//            NSLog(@"Block: %@", post);
+//        }];
+    
         [Post fetchNearbyPosts:location withBlock:^(NSArray *posts, NSError *error) {
-            self.posts;
-            NSLog(@"Recieved %d posts", posts.count);
-            [self.tableView reloadData];
-        }];
-        
+            if (error) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Couldn't find any posts at this Location", nil) message:[error localizedFailureReason] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil] show];
+            } else {
+        self.posts;
+        NSLog(@"Recieved %d posts", posts.count);
+        [self.tableView reloadData];
         [manager stopUpdatingLocation];
-    } else {
-        NSLog(@"Couldn't find any posts at this Location");
     }
+        }];
 }
 
 
@@ -229,7 +229,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
         [cell.imageView setImageWithURL:imageUrl
                             placeholderImage:defaultImage];
     } else {
-        cell.imageView.image = nil /* if you want to see that it works   defaultImage  */;
+        cell.imageView.image = defaultImage;
     }
 }
 

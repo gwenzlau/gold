@@ -9,22 +9,23 @@
 #import "AddPhotoViewController.h"
 #import "Post.h"
 #import "ProgressView.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface AddPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+@property (strong) CLLocationManager *locationManager;
 @end
 
 @implementation AddPhotoViewController
-
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.navigationItem.rightBarButtonItem = [self saveButton];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
 }
 
 - (UIBarButtonItem *)saveButton {
@@ -62,25 +63,51 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//- (void)save:(id)sender {
-//    Post *post = [[Post alloc] init];
-//    post.content = self.contentTextView.text;
-//    post.photoData = UIImagePNGRepresentation(self.imageView.image);
-//    
-//    [self.view endEditing:YES];
-//    
-//    ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
-//    
-//    [post saveWithProgress:^(CGFloat progress) {
-//        [progressView setProgress:progress];
-//    } completion:^(BOOL success, NSError *error) {
-//        [progressView dismiss];
-//        if (success) {
-//            [self.navigationController popViewControllerAnimated:YES];
-//        } else {
-//            NSLog(@"ERROR: %@", error);
-//        }
-//    }];
-//}
+-(void)locationManager:(CLLocationManager *)manager
+    didUpdateLocations:(NSArray *)locations {
+    [self getLocation];
+}
+
+-(CLLocation *) getLocation{
+    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+   // locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 80.0f;
+    [locationManager startUpdatingLocation];
+    CLLocation * location = [locationManager location];
+    return location;
+}
+
+- (void)save:(id)sender {
+    [self getLocation];
+    NSArray *locations;
+    //CLLocation *location = [locations objectAtIndex:0];
+    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+    CLLocation * location = [locationManager location];
+    
+    Post *post = [[Post alloc] init];
+    post.content = self.contentTextView.text;
+    post.photoData = UIImagePNGRepresentation(self.imageView.image);
+    
+    [self.view endEditing:YES];
+    
+    ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
+    if (location) {
+        [post saveWithProgressAtLocation:self.locationManager.location withBlock:^(CGFloat progress) {
+            [progressView setProgress:progress];
+        } completion:^(BOOL success, NSError *error) {
+            [progressView dismiss];
+            if (success) {
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                NSLog(@"ERROR: %@", error);
+            }
+        }];
+    } else {
+        NSLog(@"No Location");
+    }
+}
+
+
 
 @end

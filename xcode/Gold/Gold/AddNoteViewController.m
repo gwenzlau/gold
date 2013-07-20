@@ -11,7 +11,7 @@
 #import "Post.h"
 #import "ProgressView.h"
 
-@interface AddNoteViewController ()
+@interface AddNoteViewController () <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *contentTextField;
 
@@ -25,6 +25,9 @@
 {
     [super viewDidLoad];
     
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
     self.navigationItem.rightBarButtonItem = [self saveButton];
 }
 
@@ -36,21 +39,32 @@
 
 
 
-//I'm trying to get a POST method that doenst require photoData- and perhaps could pass lat/lng.. so combining with zuzu, not exactly working yet..........
+-(CLLocation *) getLocation{
+    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    CLLocation * location = [locationManager location];
+    return location;
+}
 
 - (void)save:(id)sender
 
 {
+    [self getLocation];
+    CLLocation *location;
     
     Post *post = [[Post alloc] init];
     post.content = self.contentTextField.text;
-    //post.location = self.
+    post.location = self.locationManager.location;
     
     [self.view endEditing:YES];
     
+    if (location) {
     ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
-    
-    [post saveWithProgress:^(CGFloat progress) {
+        
+    [post savePostAtLocation:location withBlock:^(CGFloat progress) {
         [progressView setProgress:progress];
     } completion:^(BOOL success, NSError *error) {
         [progressView dismiss];
@@ -60,6 +74,7 @@
             NSLog(@"ERROR: %@", error);
         }
     }];
+    }
 }
 
 //    {
