@@ -50,11 +50,11 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     [self loadPosts: [self getLocation]];
     self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
     
-//    self.locationManager = [[CLLocationManager alloc] init];
-//    self.locationManager.delegate = self;
-//    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-//    self.locationManager.distanceFilter = 80.0f;
-//    [self.locationManager startUpdatingLocation];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 80.0f;
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -116,42 +116,49 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    [self loadPosts: [self getLocation]];
-    CLLocation *location = [locations objectAtIndex:0];
-//    if (location) {
-//        [Post savePostAtLocation:location withContent:@"Hello from Xcode" block:^(Post *post, NSError *error) {
-//            NSLog(@"Block: %@", post);
-//        }];
+    //[self loadPosts: [self getLocation]];
+   // CLLocation *location = [locations objectAtIndex:0];
+    CLLocation * location = [manager location];
     
+    if (location) {
+        NSLog(@"You are at %@", location);
         [Post fetchNearbyPosts:location withBlock:^(NSArray *posts, NSError *error) {
             if (error) {
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Couldn't find any posts at this Location", nil) message:[error localizedFailureReason] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil] show];
             } else {
-        self.posts;
-        NSLog(@"Recieved %d posts", posts.count);
+                self.posts = posts;
         [self.tableView reloadData];
+        NSLog(@"Recieved %d posts", posts.count);
         [manager stopUpdatingLocation];
     }
         }];
+        } else {
+        NSLog(@"No Location");
+    }
 }
 
-
 - (void) loadPosts:(CLLocation *)location {
-    [Post fetchNearbyPosts:location withBlock:^(NSArray *posts, NSError *error) {
+    [Post fetchNearbyPosts:location
+                 withBlock:^(NSArray *posts, NSError *error) {
+                    
         if (posts) {
             NSLog(@"Recieved %d posts", posts.count);
+//            NSLog(@"Located near %@", location);
             self.posts = [NSMutableArray arrayWithArray:posts];
             [self.tableView reloadData];
             [self.tableView setNeedsLayout];
         } else {
             [[[UIAlertView alloc] initWithTitle:@"ERROR"
-                                        message:@"Couldn't fetch the posts."
+                                        message:@"Couldn't fetch nearby posts."
                                        delegate:nil
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil] show];
         }
-    }];
+                 }];
 }
+
+
+
 
 - (void)addPhoto:(id)sender {
     UIStoryboard *addPhotoStoryboard = [UIStoryboard storyboardWithName:@"AddPhotoStoryboard"

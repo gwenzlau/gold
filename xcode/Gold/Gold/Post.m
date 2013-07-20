@@ -119,24 +119,19 @@ static NSString * NSStringFromDate(NSDate *date) {
 
 - (void)saveWithProgressAtLocation:(CLLocation *)location
                          withBlock:(void (^)(CGFloat))progressBlock completion:(void (^)(BOOL, NSError *))completionBlock {
-//- (void)saveWithProgress:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock {
     
     if (!self.content) self.content = @"";
     
-//    NSDictionary *params = @{
-//                             @"post[content]" : self.content,
-//                             @"post[lat]": @(location.coordinate.latitude),
-//                             @"post[lng]": @(location.coordinate.longitude)
-//                             
-//                             };
-    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
-    [mutableParameters setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"post[lat]"];
-    [mutableParameters setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"post[lng]"];
-    [mutableParameters setObject:[NSString stringWithFormat:self.content] forKey:@"post[content]"];
+    NSDictionary *params = @{
+                             @"post[content]" : self.content,
+                             @"post[lat]": @(location.coordinate.latitude),
+                             @"post[lng]": @(location.coordinate.longitude)
+                             
+                             };
     
     NSURLRequest *postRequest = [[APIClient sharedClient] multipartFormRequestWithMethod:@"POST"
                                                                                     path:@"/posts"
-                                                                              parameters:mutableParameters
+                                                                              parameters:params
                                                                constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
                                   {
                                       [formData appendPartWithFileData:self.photoData

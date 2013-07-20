@@ -79,10 +79,16 @@
 }
 
 - (void)save:(id)sender {
+    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 80.0f;
+    [locationManager startUpdatingLocation];
+    
     [self getLocation];
     NSArray *locations;
     //CLLocation *location = [locations objectAtIndex:0];
-    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+   // CLLocationManager * locationManager = [[CLLocationManager alloc] init];
     CLLocation * location = [locationManager location];
     
     Post *post = [[Post alloc] init];
@@ -106,8 +112,6 @@
     } else {
         NSLog(@"No Location");
     }
-}
-
-
+ }
 
 @end
