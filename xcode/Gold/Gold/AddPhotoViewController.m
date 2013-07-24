@@ -80,7 +80,7 @@
 
 - (void)save:(id)sender {
     CLLocationManager * locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
+  //  locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     self.locationManager.distanceFilter = 80.0f;
     [locationManager startUpdatingLocation];

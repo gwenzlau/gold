@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :signature
   # attr_accessible :title, :body
+
+#when ur ready for associations
+  #has_many :posts
 end

@@ -1,8 +1,14 @@
 Gold::Application.routes.draw do
+  get "users/index"
+
+  get "users/show"
+
   resources :posts
 
 
   devise_for :users
+  match 'users/:id'=> 'users#show'
+  
 
   root :to => 'pages#home'
 

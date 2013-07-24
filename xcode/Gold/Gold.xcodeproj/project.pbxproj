@@ -32,6 +32,7 @@
 		A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */; };
 		A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5183C1799F18600DC0C7A /* DetailViewController.m */; };
 		A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B5183D1799F18700DC0C7A /* DetailViewController.xib */; };
+		A4E513E9179DF41B001F8D92 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E513E8179DF41B001F8D92 /* User.m */; };
 		DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225FE81F6304353B87B3356 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,8 @@
 		A4B5183B1799F18600DC0C7A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../../Gold/Gold/DetailViewController.h; sourceTree = "<group>"; };
 		A4B5183C1799F18600DC0C7A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../../Gold/Gold/DetailViewController.m; sourceTree = "<group>"; };
 		A4B5183D1799F18700DC0C7A /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController.xib; path = ../../Gold/Gold/DetailViewController.xib; sourceTree = "<group>"; };
+		A4E513E7179DF41B001F8D92 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../../Gold/Gold/User.h; sourceTree = "<group>"; };
+		A4E513E8179DF41B001F8D92 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../../Gold/Gold/User.m; sourceTree = "<group>"; };
 		F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -134,6 +137,7 @@
 				A46A7DE617983ED9002937F3 /* AppDelegate.h */,
 				A46A7DE717983ED9002937F3 /* AppDelegate.m */,
 				A4B518291798550B00DC0C7A /* Controllers */,
+				A4E513EA179DF41E001F8D92 /* Users */,
 				A4B51810179846B700DC0C7A /* Models */,
 				A4B5181D179852F400DC0C7A /* Views */,
 				A4B51827179854C000DC0C7A /* Resources */,
@@ -230,6 +234,15 @@
 				A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A4E513EA179DF41E001F8D92 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				A4E513E7179DF41B001F8D92 /* User.h */,
+				A4E513E8179DF41B001F8D92 /* User.m */,
+			);
+			name = Users;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +362,7 @@
 				A4B518351798802700DC0C7A /* AddNoteViewController.m in Sources */,
 				A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */,
 				A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */,
+				A4E513E9179DF41B001F8D92 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

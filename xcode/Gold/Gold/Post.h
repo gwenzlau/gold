@@ -24,7 +24,6 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 - (void)saveWithProgressAtLocation:(CLLocation *)location
-              // withContent:(NSString *)content
                withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock;
 
 //- (void)saveWithProgress: (CLLocation *)location
@@ -32,10 +31,10 @@
 //- (void)saveWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
 
 - (void)saveWithCompletionAtLocation:(CLLocation *)location
-                // withContent:(NSString *)content
                  withBlock:(void (^)(BOOL success, NSError *error))completionBlock;
 
-- (void)savePostAtLocation:(CLLocation *)location
-               withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock;
+- (void)createPostAtLocation:(CLLocation *)location
+                 withContent:(NSString *)content
+                   withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock;
 
 @end

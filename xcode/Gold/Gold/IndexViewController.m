@@ -46,8 +46,6 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     self.navigationItem.leftBarButtonItem = [self photoButton];
     self.navigationItem.rightBarButtonItem = [self noteButton];
     
-    [self listenForCreatedPosts];
-    [self loadPosts: [self getLocation]];
     self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
     
     self.locationManager = [[CLLocationManager alloc] init];
@@ -55,6 +53,9 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     self.locationManager.distanceFilter = 80.0f;
     [self.locationManager startUpdatingLocation];
+    
+    [self listenForCreatedPosts];
+    [self loadPosts: [self getLocation]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -128,7 +129,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
             } else {
                 self.posts = posts;
         [self.tableView reloadData];
-        NSLog(@"Recieved %d posts", posts.count);
+       // NSLog(@"Recieved %d posts", posts.count);
         [manager stopUpdatingLocation];
     }
         }];
@@ -138,12 +139,18 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 }
 
 - (void) loadPosts:(CLLocation *)location {
+    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 80.0f;
+    [locationManager startUpdatingLocation];
+    
     [Post fetchNearbyPosts:location
                  withBlock:^(NSArray *posts, NSError *error) {
                     
         if (posts) {
             NSLog(@"Recieved %d posts", posts.count);
-//            NSLog(@"Located near %@", location);
+            NSLog(@"And those posts are located near you %@", location);
             self.posts = [NSMutableArray arrayWithArray:posts];
             [self.tableView reloadData];
             [self.tableView setNeedsLayout];
@@ -230,7 +237,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
    // cell.detailTextLabel.text = post.location;
     
     NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
-    UIImage *defaultImage = [UIImage imageNamed:@"marko-nophoto.png"];
+    UIImage *defaultImage = [UIImage imageNamed: nil /*@"marko-nophoto.png"*/];
     
     if (imageUrl) {
         [cell.imageView setImageWithURL:imageUrl

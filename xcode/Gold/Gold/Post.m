@@ -100,6 +100,9 @@ static NSString * NSStringFromDate(NSDate *date) {
 - (void)updateFromJSON:(NSDictionary *)dictionary {
     self.content = [dictionary stringForKey:@"content"];
     
+    NSDictionary *photoDataDictionary = [dictionary objectForKey:@"photoData"];
+    self.photoData = [photoDataDictionary valueForKey:@"photoData"];
+    
     NSDictionary *photoDictionary = [dictionary objectForKey:@"photo"];
     self.largeUrl = [photoDictionary stringForKey:@"url"];
     
@@ -112,8 +115,6 @@ static NSString * NSStringFromDate(NSDate *date) {
 }
 
 - (void)saveWithCompletionAtLocation:(CLLocation *)location withBlock:(void (^)(BOOL, NSError *))completionBlock {
-//- (void)saveWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock {
-   // [self saveWithProgress:nil completion:completionBlock];
     [self saveWithProgressAtLocation:location withBlock:nil completion:completionBlock];
 }
 
@@ -139,7 +140,6 @@ static NSString * NSStringFromDate(NSDate *date) {
                                                               fileName:@""
                                                               mimeType:@"image/png"];
                                   }];
-//below, I changed the NSInteger to NSUInteger to fix the error- this differs from BL...
     AFHTTPRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:postRequest];
     [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
         CGFloat progress = ((CGFloat)totalBytesWritten) / totalBytesExpectedToWrite;
@@ -161,17 +161,17 @@ static NSString * NSStringFromDate(NSDate *date) {
     }];
     
     [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
-};
+}
 
-- (void)savePostAtLocation:(CLLocation *)location
-    withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock {
-   // if (!self.content) self.content = @"";
-    
+- (void)createPostAtLocation:(CLLocation *)location
+                 withContent:(NSString *)content
+                       withBlock:(void (^)(CGFloat))progressBlock completion:(void (^)(BOOL, NSError *))completionBlock {
     NSDictionary *params = @{
                              @"post[content]" : self.content,
-                             @"post[lat]" : @(location.coordinate.latitude),
-                             @"post[lng]" : @(location.coordinate.longitude)
-                                  };
+                             @"post[lat]": @(location.coordinate.latitude),
+                             @"post[lng]": @(location.coordinate.longitude)
+                             
+                             };
     
     [[APIClient sharedClient] postPath:@"/posts" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         Post *post = [[Post alloc] initWithDictionary:responseObject];
@@ -190,7 +190,6 @@ static NSString * NSStringFromDate(NSDate *date) {
     
    // [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
 }
-
 
 
 - (void)notifyCreated {

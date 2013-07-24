@@ -12,8 +12,8 @@
 #import "ProgressView.h"
 
 @interface AddNoteViewController () <CLLocationManagerDelegate>
-
 @property (weak, nonatomic) IBOutlet UITextField *contentTextField;
+
 
 @property (strong) CLLocationManager *locationManager;
 
@@ -41,44 +41,61 @@
 
 -(CLLocation *) getLocation{
     CLLocationManager * locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
+// locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 80.0f;
     [locationManager startUpdatingLocation];
     CLLocation * location = [locationManager location];
     return location;
 }
 
+-(void)locationManager:(CLLocationManager *)manager
+    didUpdateLocations:(NSArray *)locations {
+    [self getLocation];
+}
+
 - (void)save:(id)sender
 
 {
+    CLLocationManager * locationManager = [[CLLocationManager alloc] init];
+//  locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 80.0f;
+    [locationManager startUpdatingLocation];
+    
     [self getLocation];
-    CLLocation *location;
+   // NSArray *locations;
+    //CLLocation *location = [locations objectAtIndex:0];
+    CLLocation * location = [locationManager location];
+
     
     Post *post = [[Post alloc] init];
     post.content = self.contentTextField.text;
-    post.location = self.locationManager.location;
     
     [self.view endEditing:YES];
     
-    if (location) {
     ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
+    if (location) {
         
-    [post savePostAtLocation:location withBlock:^(CGFloat progress) {
-        [progressView setProgress:progress];
-    } completion:^(BOOL success, NSError *error) {
-        [progressView dismiss];
-        if (success) {
-            [self.navigationController popViewControllerAnimated:YES];
+        [post createPostAtLocation:self.locationManager.location withContent:self.contentTextField.text withBlock:^(CGFloat progress) {
+            [progressView setProgress:progress];
+        } completion:^(BOOL success, NSError *error) {
+            [progressView dismiss];
+            if (success) {
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                NSLog(@"ERROR: %@", error);
+            }
+        }];
         } else {
-            NSLog(@"ERROR: %@", error);
+            NSLog(@"No Location");
         }
-    }];
-    }
 }
 
+
+
 //    {
-//        
+//
 //        NSDictionary *params = @{
 //                                 @"post[content]" : self.content,
 //                                 @"post[lat]" : self.location,
