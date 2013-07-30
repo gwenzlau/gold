@@ -12,7 +12,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface AddPhotoViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+
+@property (weak, nonatomic) IBOutlet UITextField *contentTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong) CLLocationManager *locationManager;
 @end
@@ -25,7 +26,7 @@
 
     self.navigationItem.rightBarButtonItem = [self saveButton];
     self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
+  //  self.locationManager.delegate = self;
 }
 
 - (UIBarButtonItem *)saveButton {
@@ -92,7 +93,7 @@
     CLLocation * location = [locationManager location];
     
     Post *post = [[Post alloc] init];
-    post.content = self.contentTextView.text;
+    post.content = self.contentTextField.text;
     post.photoData = UIImagePNGRepresentation(self.imageView.image);
     
     [self.view endEditing:YES];

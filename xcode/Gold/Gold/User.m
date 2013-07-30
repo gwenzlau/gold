@@ -2,12 +2,14 @@
 //  User.m
 //  Gold
 //
-//  Created by Grant Wenzlau on 7/22/13.
+//  Created by Grant Wenzlau on 7/30/13.
 //  Copyright (c) 2013 marko. All rights reserved.
 //
 
 #import "User.h"
+
 #import "APIClient.h"
+
 #import "NSDictionary+NonNull.h"
 
 @implementation User
@@ -18,24 +20,23 @@
         return nil;
     }
     
+    self.username = [dictionary nonNullValueForKeyPath:@"signature"];
     self.email = [dictionary nonNullValueForKeyPath:@"email"];
-    self.signature = [dictionary nonNullValueForKeyPath:@"signature"];
     
     return self;
 }
 
 + (void)createUserWithUsername:(NSString *)signature
-email:(NSString *)email
-password:(NSString *)password
-block:(void (^)(User *user))block
+                         email:(NSString *)email
+                      password:(NSString *)password
+                         block:(void (^)(User *user))block
 {
-    NSDictionary *parameters = @{
+    NSDictionary *parameters = @{@"signature": signature,
                                  @"email": email,
-                                 @"password": password,
-                                 @"signature": signature
+                                 @"password": password
                                  };
     
-    [[APIClient sharedClient] postPath:@"/users/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] postPath:@"/users" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         User *user = [[User alloc] initWithDictionary:responseObject];
         
         if (block) {

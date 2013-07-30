@@ -13,6 +13,7 @@
 #import "DetailViewController.h"
 #import "SSPullToRefresh.h"
 #import "UIImageView+AFNetworking.h"
+#import "CreateUserViewController.h"
 
 static CLLocationDistance const kMapRegionSpanDistance = 5000;
 
@@ -66,6 +67,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

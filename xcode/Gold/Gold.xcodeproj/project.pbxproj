@@ -16,6 +16,9 @@
 		A46A7DEA17983ED9002937F3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A46A7DE917983ED9002937F3 /* Default.png */; };
 		A46A7DEC17983ED9002937F3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A46A7DEB17983ED9002937F3 /* Default@2x.png */; };
 		A46A7DEE17983ED9002937F3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A46A7DED17983ED9002937F3 /* Default-568h@2x.png */; };
+		A496128317A84ED300BCD15B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A496128217A84ED300BCD15B /* User.m */; };
+		A496128717A8508F00BCD15B /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A496128517A8508F00BCD15B /* CreateUserViewController.m */; };
+		A496128817A8508F00BCD15B /* CreateUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A496128617A8508F00BCD15B /* CreateUserViewController.xib */; };
 		A4B518081798411600DC0C7A /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518071798411600DC0C7A /* IndexViewController.m */; };
 		A4B5180B1798434F00DC0C7A /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5180A1798434F00DC0C7A /* Post.m */; };
 		A4B5180E179843C500DC0C7A /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5180D179843C500DC0C7A /* APIClient.m */; };
@@ -32,9 +35,6 @@
 		A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */; };
 		A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5183C1799F18600DC0C7A /* DetailViewController.m */; };
 		A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B5183D1799F18700DC0C7A /* DetailViewController.xib */; };
-		A4E513E9179DF41B001F8D92 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E513E8179DF41B001F8D92 /* User.m */; };
-		A4E513EE17A01EEE001F8D92 /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E513EC17A01EEE001F8D92 /* CreateUserViewController.m */; };
-		A4E513EF17A01EEE001F8D92 /* CreateUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E513ED17A01EEE001F8D92 /* CreateUserViewController.xib */; };
 		DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225FE81F6304353B87B3356 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +53,11 @@
 		A46A7DE917983ED9002937F3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A46A7DEB17983ED9002937F3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A46A7DED17983ED9002937F3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A496128117A84ED300BCD15B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../../Gold/Gold/User.h; sourceTree = "<group>"; };
+		A496128217A84ED300BCD15B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../../Gold/Gold/User.m; sourceTree = "<group>"; };
+		A496128417A8508F00BCD15B /* CreateUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateUserViewController.h; path = ../../Gold/Gold/CreateUserViewController.h; sourceTree = "<group>"; };
+		A496128517A8508F00BCD15B /* CreateUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateUserViewController.m; path = ../../Gold/Gold/CreateUserViewController.m; sourceTree = "<group>"; };
+		A496128617A8508F00BCD15B /* CreateUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateUserViewController.xib; path = ../../Gold/Gold/CreateUserViewController.xib; sourceTree = "<group>"; };
 		A4B518061798411600DC0C7A /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = ../../Gold/Gold/IndexViewController.h; sourceTree = "<group>"; };
 		A4B518071798411600DC0C7A /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = ../../Gold/Gold/IndexViewController.m; sourceTree = "<group>"; };
 		A4B518091798434F00DC0C7A /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = ../../Gold/Gold/Post.h; sourceTree = "<group>"; };
@@ -80,11 +85,6 @@
 		A4B5183B1799F18600DC0C7A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../../Gold/Gold/DetailViewController.h; sourceTree = "<group>"; };
 		A4B5183C1799F18600DC0C7A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../../Gold/Gold/DetailViewController.m; sourceTree = "<group>"; };
 		A4B5183D1799F18700DC0C7A /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController.xib; path = ../../Gold/Gold/DetailViewController.xib; sourceTree = "<group>"; };
-		A4E513E7179DF41B001F8D92 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../../Gold/Gold/User.h; sourceTree = "<group>"; };
-		A4E513E8179DF41B001F8D92 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../../Gold/Gold/User.m; sourceTree = "<group>"; };
-		A4E513EB17A01EEE001F8D92 /* CreateUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateUserViewController.h; path = ../../Gold/Gold/CreateUserViewController.h; sourceTree = "<group>"; };
-		A4E513EC17A01EEE001F8D92 /* CreateUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateUserViewController.m; path = ../../Gold/Gold/CreateUserViewController.m; sourceTree = "<group>"; };
-		A4E513ED17A01EEE001F8D92 /* CreateUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateUserViewController.xib; path = ../../Gold/Gold/CreateUserViewController.xib; sourceTree = "<group>"; };
 		F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -179,6 +179,8 @@
 			children = (
 				A4B518091798434F00DC0C7A /* Post.h */,
 				A4B5180A1798434F00DC0C7A /* Post.m */,
+				A496128117A84ED300BCD15B /* User.h */,
+				A496128217A84ED300BCD15B /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -244,11 +246,9 @@
 		A4E513EA179DF41E001F8D92 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				A4E513E7179DF41B001F8D92 /* User.h */,
-				A4E513E8179DF41B001F8D92 /* User.m */,
-				A4E513EB17A01EEE001F8D92 /* CreateUserViewController.h */,
-				A4E513EC17A01EEE001F8D92 /* CreateUserViewController.m */,
-				A4E513ED17A01EEE001F8D92 /* CreateUserViewController.xib */,
+				A496128417A8508F00BCD15B /* CreateUserViewController.h */,
+				A496128517A8508F00BCD15B /* CreateUserViewController.m */,
+				A496128617A8508F00BCD15B /* CreateUserViewController.xib */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 				A4B518301798727800DC0C7A /* photo_icon.png in Resources */,
 				A4B518321798800900DC0C7A /* AddNoteStoryboard.storyboard in Resources */,
 				A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */,
-				A4E513EF17A01EEE001F8D92 /* CreateUserViewController.xib in Resources */,
+				A496128817A8508F00BCD15B /* CreateUserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,8 +359,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A496128317A84ED300BCD15B /* User.m in Sources */,
 				A46A7DE417983ED9002937F3 /* main.m in Sources */,
 				A46A7DE817983ED9002937F3 /* AppDelegate.m in Sources */,
+				A496128717A8508F00BCD15B /* CreateUserViewController.m in Sources */,
 				A4B518081798411600DC0C7A /* IndexViewController.m in Sources */,
 				A4B5180B1798434F00DC0C7A /* Post.m in Sources */,
 				A4B5180E179843C500DC0C7A /* APIClient.m in Sources */,
@@ -371,8 +373,6 @@
 				A4B518351798802700DC0C7A /* AddNoteViewController.m in Sources */,
 				A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */,
 				A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */,
-				A4E513E9179DF41B001F8D92 /* User.m in Sources */,
-				A4E513EE17A01EEE001F8D92 /* CreateUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

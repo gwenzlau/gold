@@ -1,9 +1,10 @@
 Gold::Application.routes.draw do
-  get "users/index"
+ # get "users/index"
 
   get "users/show"
 
   resources :posts
+   resources :users
 
 
   devise_for :users

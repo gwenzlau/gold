@@ -2,7 +2,7 @@
 //  User.h
 //  Gold
 //
-//  Created by Grant Wenzlau on 7/22/13.
+//  Created by Grant Wenzlau on 7/30/13.
 //  Copyright (c) 2013 marko. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 @interface User : NSObject
 
-@property (strong) NSString *signature;
+@property (strong) NSString *username;
 @property (strong) NSString *email;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

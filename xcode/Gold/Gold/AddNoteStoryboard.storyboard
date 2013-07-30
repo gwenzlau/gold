@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Yrt-96-k9m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4471.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Yrt-96-k9m">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3697.3"/>
     </dependencies>
     <scenes>
         <!--Add Note View Controller-->
@@ -9,20 +10,21 @@
             <objects>
                 <tableViewController id="Yrt-96-k9m" customClass="AddNoteViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Dpt-kV-I6B">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection id="nzF-XK-Ged">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="135" id="Ud5-re-klZ">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="137"/>
+                                        <rect key="frame" x="0.0" y="99" width="320" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="134"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ud5-re-klZ" id="qwA-y2-6ki">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="bezel" placeholder="Leave your mark..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="olc-UY-uvR">
+                                                    <rect key="frame" x="30" y="21" width="260" height="94"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Cnn-a3-G1q"/>
                                                         <constraint firstAttribute="height" constant="94" id="cK0-XD-c5e"/>
@@ -31,11 +33,10 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="olc-UY-uvR" firstAttribute="centerX" secondItem="Ud5-re-klZ" secondAttribute="centerX" type="default" id="Qa9-w3-hll"/>
-                                            <constraint firstItem="olc-UY-uvR" firstAttribute="centerY" secondItem="Ud5-re-klZ" secondAttribute="centerY" type="default" id="oDO-9Z-aew"/>
+                                            <constraint firstItem="olc-UY-uvR" firstAttribute="centerY" secondItem="Ud5-re-klZ" secondAttribute="centerY" id="JPc-II-i8k"/>
+                                            <constraint firstItem="olc-UY-uvR" firstAttribute="centerX" secondItem="Ud5-re-klZ" secondAttribute="centerX" id="NWI-RY-3Dp"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>

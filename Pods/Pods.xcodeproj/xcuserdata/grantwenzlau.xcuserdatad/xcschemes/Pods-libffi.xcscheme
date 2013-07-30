@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0460"
+   LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "89D7D472322E420DA266FCC3"
+               BlueprintIdentifier = "1BB666F955C744EBB4E4267F"
                BuildableName = "libPods-libffi.a"
                BlueprintName = "Pods-libffi"
                ReferencedContainer = "container:Pods.xcodeproj">

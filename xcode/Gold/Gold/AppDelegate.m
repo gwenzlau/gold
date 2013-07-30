@@ -10,33 +10,34 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "IndexViewController.h"
 #import "CreateUserViewController.h"
+#import "Post.h"
 
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:8 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    
-    IndexViewController *rootController = [[IndexViewController alloc] init];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:rootController];
+    IndexViewController *viewController = [[IndexViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
     CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] init];
     UINavigationController *modalNavigationController = [[UINavigationController alloc] initWithRootViewController:createUserViewController];
     [self.navigationController pushViewController:createUserViewController animated:NO];
+
+//    [self.navigationController presentViewController:modalNavigationController animated:YES completion:nil];
     
-   // [self.navigationController presentViewController:modalNavigationController animated:YES completion:nil];
-    
+  
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     
+
     return YES;
 }
 
