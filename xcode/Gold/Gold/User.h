@@ -10,7 +10,7 @@
 
 @interface User : NSObject
 
-@property (strong) NSString *username;
+@property (strong) NSString *signature;
 @property (strong) NSString *email;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

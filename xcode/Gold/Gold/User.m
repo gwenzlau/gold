@@ -18,23 +18,24 @@
         return nil;
     }
     
-    self.username = [dictionary nonNullValueForKeyPath:@"username"];
     self.email = [dictionary nonNullValueForKeyPath:@"email"];
+    self.signature = [dictionary nonNullValueForKeyPath:@"signature"];
     
     return self;
 }
 
-+ (void)createUserWithUsername:(NSString *)username
++ (void)createUserWithUsername:(NSString *)signature
 email:(NSString *)email
 password:(NSString *)password
 block:(void (^)(User *user))block
 {
-    NSDictionary *parameters = @{@"username": username,
+    NSDictionary *parameters = @{
                                  @"email": email,
-                                 @"password": password
+                                 @"password": password,
+                                 @"signature": signature
                                  };
     
-    [[APIClient sharedClient] postPath:@"/users" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] postPath:@"/users/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         User *user = [[User alloc] initWithDictionary:responseObject];
         
         if (block) {

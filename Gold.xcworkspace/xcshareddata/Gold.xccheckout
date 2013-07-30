@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7D1F885F-45E1-48B8-A3F5-9447EA988C6A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Gold</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DE6AB8E4-8809-46DB-B4C5-0DCF1388064A</key>
+		<string>ssh://github.com/gwenzlau/gold.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Gold.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DE6AB8E4-8809-46DB-B4C5-0DCF1388064A</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/gwenzlau/gold.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DE6AB8E4-8809-46DB-B4C5-0DCF1388064A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DE6AB8E4-8809-46DB-B4C5-0DCF1388064A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>gold</string>
+		</dict>
+	</array>
+</dict>
+</plist>

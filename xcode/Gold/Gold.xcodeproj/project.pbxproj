@@ -33,6 +33,8 @@
 		A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5183C1799F18600DC0C7A /* DetailViewController.m */; };
 		A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B5183D1799F18700DC0C7A /* DetailViewController.xib */; };
 		A4E513E9179DF41B001F8D92 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E513E8179DF41B001F8D92 /* User.m */; };
+		A4E513EE17A01EEE001F8D92 /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E513EC17A01EEE001F8D92 /* CreateUserViewController.m */; };
+		A4E513EF17A01EEE001F8D92 /* CreateUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E513ED17A01EEE001F8D92 /* CreateUserViewController.xib */; };
 		DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225FE81F6304353B87B3356 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,9 @@
 		A4B5183D1799F18700DC0C7A /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController.xib; path = ../../Gold/Gold/DetailViewController.xib; sourceTree = "<group>"; };
 		A4E513E7179DF41B001F8D92 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../../Gold/Gold/User.h; sourceTree = "<group>"; };
 		A4E513E8179DF41B001F8D92 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../../Gold/Gold/User.m; sourceTree = "<group>"; };
+		A4E513EB17A01EEE001F8D92 /* CreateUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateUserViewController.h; path = ../../Gold/Gold/CreateUserViewController.h; sourceTree = "<group>"; };
+		A4E513EC17A01EEE001F8D92 /* CreateUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateUserViewController.m; path = ../../Gold/Gold/CreateUserViewController.m; sourceTree = "<group>"; };
+		A4E513ED17A01EEE001F8D92 /* CreateUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateUserViewController.xib; path = ../../Gold/Gold/CreateUserViewController.xib; sourceTree = "<group>"; };
 		F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -241,6 +246,9 @@
 			children = (
 				A4E513E7179DF41B001F8D92 /* User.h */,
 				A4E513E8179DF41B001F8D92 /* User.m */,
+				A4E513EB17A01EEE001F8D92 /* CreateUserViewController.h */,
+				A4E513EC17A01EEE001F8D92 /* CreateUserViewController.m */,
+				A4E513ED17A01EEE001F8D92 /* CreateUserViewController.xib */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -307,6 +315,7 @@
 				A4B518301798727800DC0C7A /* photo_icon.png in Resources */,
 				A4B518321798800900DC0C7A /* AddNoteStoryboard.storyboard in Resources */,
 				A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */,
+				A4E513EF17A01EEE001F8D92 /* CreateUserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +372,7 @@
 				A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */,
 				A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */,
 				A4E513E9179DF41B001F8D92 /* User.m in Sources */,
+				A4E513EE17A01EEE001F8D92 /* CreateUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
