@@ -450,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Wenzlau (Z4ACED7Y4L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gold/Gold-Prefix.pch";
 				INFOPLIST_FILE = "Gold/Gold-Info.plist";
@@ -462,6 +463,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Wenzlau (Z4ACED7Y4L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gold/Gold-Prefix.pch";
 				INFOPLIST_FILE = "Gold/Gold-Info.plist";

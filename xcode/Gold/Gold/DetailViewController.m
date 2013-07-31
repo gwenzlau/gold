@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"ReMark"];
+    self.title = [NSString stringWithFormat:@"reMark"];
  
     NSURL *imageUrl = [NSURL URLWithString:self.post.largeUrl];
     [self.imageView setImageWithURL:imageUrl];

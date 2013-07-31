@@ -20,18 +20,18 @@
         return nil;
     }
     
-    self.username = [dictionary nonNullValueForKeyPath:@"signature"];
+    self.username = [dictionary nonNullValueForKeyPath:@"username"];
     self.email = [dictionary nonNullValueForKeyPath:@"email"];
     
     return self;
 }
 
-+ (void)createUserWithUsername:(NSString *)signature
++ (void)createUserWithUsername:(NSString *)username
                          email:(NSString *)email
                       password:(NSString *)password
                          block:(void (^)(User *user))block
 {
-    NSDictionary *parameters = @{@"signature": signature,
+    NSDictionary *parameters = @{@"username": username,
                                  @"email": email,
                                  @"password": password
                                  };

@@ -22,9 +22,9 @@
 @end
 
 
-//@protocol CreateUserViewControllerDelegate <NSObject>
-//
-//- (void)viewController:(CreateUserViewController *)viewController didCreateUser:(User *)user;
-//
-//@end
+@protocol CreateUserViewControllerDelegate <NSObject>
+
+- (void)viewController:(CreateUserViewController *)viewController didCreateUser:(User *)user;
+
+@end
 

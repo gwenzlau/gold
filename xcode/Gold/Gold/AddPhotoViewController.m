@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *contentTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)takePhoto:(id)sender;
+
 @property (strong) CLLocationManager *locationManager;
 @end
 
@@ -27,6 +29,18 @@
     self.navigationItem.rightBarButtonItem = [self saveButton];
     self.locationManager = [[CLLocationManager alloc] init];
   //  self.locationManager.delegate = self;
+    
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Oh no!"
+                                                              message:@"Device has no camera"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
+        
+    }
 }
 
 - (UIBarButtonItem *)saveButton {
@@ -115,4 +129,12 @@
     }
  }
 
+- (IBAction)takePhoto:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
 @end
