@@ -35,6 +35,9 @@
 		A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */; };
 		A4B5183E1799F18700DC0C7A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5183C1799F18600DC0C7A /* DetailViewController.m */; };
 		A4B5183F1799F18700DC0C7A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B5183D1799F18700DC0C7A /* DetailViewController.xib */; };
+		A4C3960E17A99A76006DC7D2 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C3960D17A99A76006DC7D2 /* AWSRuntime.framework */; };
+		A4C3961017A99AE8006DC7D2 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C3960F17A99AE8006DC7D2 /* AWSS3.framework */; };
+		A4C3961317A99CFE006DC7D2 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C3961217A99CFE006DC7D2 /* Constants.m */; };
 		DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225FE81F6304353B87B3356 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +88,10 @@
 		A4B5183B1799F18600DC0C7A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../../Gold/Gold/DetailViewController.h; sourceTree = "<group>"; };
 		A4B5183C1799F18600DC0C7A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../../Gold/Gold/DetailViewController.m; sourceTree = "<group>"; };
 		A4B5183D1799F18700DC0C7A /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController.xib; path = ../../Gold/Gold/DetailViewController.xib; sourceTree = "<group>"; };
+		A4C3960D17A99A76006DC7D2 /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = "../../../Downloads/aws-ios-sdk-1.6.0/AWSRuntime.framework"; sourceTree = "<group>"; };
+		A4C3960F17A99AE8006DC7D2 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = "../../../Downloads/aws-ios-sdk-1.6.0/AWSS3.framework"; sourceTree = "<group>"; };
+		A4C3961117A99CFE006DC7D2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../../Gold/Gold/Constants.h; sourceTree = "<group>"; };
+		A4C3961217A99CFE006DC7D2 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = ../../Gold/Gold/Constants.m; sourceTree = "<group>"; };
 		F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -93,6 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4C3961017A99AE8006DC7D2 /* AWSS3.framework in Frameworks */,
+				A4C3960E17A99A76006DC7D2 /* AWSRuntime.framework in Frameworks */,
 				A4B518121798489200DC0C7A /* CoreLocation.framework in Frameworks */,
 				A46A7DD817983ED9002937F3 /* UIKit.framework in Frameworks */,
 				A46A7DDA17983ED9002937F3 /* Foundation.framework in Frameworks */,
@@ -125,6 +134,8 @@
 		A46A7DD617983ED9002937F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4C3960F17A99AE8006DC7D2 /* AWSS3.framework */,
+				A4C3960D17A99A76006DC7D2 /* AWSRuntime.framework */,
 				A4B518111798489200DC0C7A /* CoreLocation.framework */,
 				A46A7DD717983ED9002937F3 /* UIKit.framework */,
 				A46A7DD917983ED9002937F3 /* Foundation.framework */,
@@ -230,6 +241,8 @@
 			children = (
 				A4B518061798411600DC0C7A /* IndexViewController.h */,
 				A4B518071798411600DC0C7A /* IndexViewController.m */,
+				A4C3961117A99CFE006DC7D2 /* Constants.h */,
+				A4C3961217A99CFE006DC7D2 /* Constants.m */,
 				A4B5183B1799F18600DC0C7A /* DetailViewController.h */,
 				A4B5183C1799F18600DC0C7A /* DetailViewController.m */,
 				A4B5183D1799F18700DC0C7A /* DetailViewController.xib */,
@@ -364,6 +377,7 @@
 				A46A7DE817983ED9002937F3 /* AppDelegate.m in Sources */,
 				A496128717A8508F00BCD15B /* CreateUserViewController.m in Sources */,
 				A4B518081798411600DC0C7A /* IndexViewController.m in Sources */,
+				A4C3961317A99CFE006DC7D2 /* Constants.m in Sources */,
 				A4B5180B1798434F00DC0C7A /* Post.m in Sources */,
 				A4B5180E179843C500DC0C7A /* APIClient.m in Sources */,
 				A4B51818179850F300DC0C7A /* Notifications.m in Sources */,
@@ -451,6 +465,10 @@
 			baseConfigurationReference = F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Wenzlau (Z4ACED7Y4L)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../../Downloads/aws-ios-sdk-1.6.0",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gold/Gold-Prefix.pch";
 				INFOPLIST_FILE = "Gold/Gold-Info.plist";
@@ -464,6 +482,10 @@
 			baseConfigurationReference = F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Wenzlau (Z4ACED7Y4L)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../../Downloads/aws-ios-sdk-1.6.0",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gold/Gold-Prefix.pch";
 				INFOPLIST_FILE = "Gold/Gold-Info.plist";

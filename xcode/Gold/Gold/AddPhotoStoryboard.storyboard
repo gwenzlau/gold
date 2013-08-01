@@ -89,7 +89,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="contentTextField" destination="jnC-o6-XPb" id="f7Q-0e-WBZ"/>
-                        <outlet property="imageView" destination="mPA-Kc-yha" id="MJf-IE-IVC"/>
+                        <outlet property="imageView" destination="mPA-Kc-yha" id="VJ7-Y6-hRk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ekb-hn-EhA" userLabel="First Responder" sceneMemberID="firstResponder"/>

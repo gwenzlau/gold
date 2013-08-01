@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AWSS3/AWSS3.h>
 
-@interface AddPhotoViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+typedef enum {
+ //   GrandCentralDispatch,
+  //  Delegate,
+    BackgroundThread
+} UploadType;
+
+@interface AddPhotoViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonServiceRequestDelegate> {
+    UploadType _uploadType;
+}
+
+@property (nonatomic, retain) AmazonS3Client *s3;
 
 @end

@@ -7,6 +7,8 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'simple_form'
 gem 'rabl'
+gem 'aws-sdk', '~> 1.5.7'
+gem "paperclip", "~> 3.0"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -27,7 +29,7 @@ end
 
 gem 'jquery-rails'
 gem 'carrierwave'
-gem 'fog'
+gem "fog", "~> 1.3.1"
 gem 'mini_magick'
 
 group :development, :test do
