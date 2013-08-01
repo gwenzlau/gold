@@ -229,11 +229,13 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     Post *post = [self.posts objectAtIndex:indexPath.row];
     
+    NSDictionary *item = (NSDictionary *)[self.posts objectAtIndex:indexPath.row];
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.text = post.content;
-  //  cell.detailTextLabel.text = post.timestamp;
-   // cell.detailTextLabel.text = post.location;
+    //cell.detailTextLabel.text = post.location;
+    //cell.detailTextLabel.text = [item objectForKey:@"location"];
+   // cell.detailTextLabel.text = [item objectForKey:@"timestamp"];
     
     NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
     UIImage *defaultImage = [UIImage imageNamed: nil /*@"marko-nophoto.png"*/];

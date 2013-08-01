@@ -79,6 +79,7 @@
         
         [Post createNoteAtLocation:location withContent:self.contentTextField.text block:^(Post *post) {
             NSLog(@"Block: %@", post);
+            [self.navigationController popViewControllerAnimated:YES];
         }];
     }
     

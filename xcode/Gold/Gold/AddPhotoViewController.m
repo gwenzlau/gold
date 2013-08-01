@@ -87,6 +87,19 @@
     [self getLocation];
 }
 
+#pragma  marko TakePhoto
+- (IBAction)takePhoto:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker
+                       animated:YES completion:nil];
+}
+
+
+
 -(CLLocation *) getLocation{
     CLLocationManager * locationManager = [[CLLocationManager alloc] init];
    // locationManager.delegate = self;
@@ -133,14 +146,7 @@
     }
  }
 
-- (IBAction)takePhoto:(id)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
-}
+
 
 #pragma mark backgroundThread
 
