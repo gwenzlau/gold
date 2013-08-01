@@ -77,57 +77,25 @@
     ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
     if (location) {
         
-        [post createPostAtLocation:self.locationManager.location withContent:self.contentTextField.text withBlock:^(CGFloat progress) {
-            [progressView setProgress:progress];
-        } completion:^(BOOL success, NSError *error) {
-            [progressView dismiss];
-            if (success) {
-                [self.navigationController popViewControllerAnimated:YES];
-            } else {
-                NSLog(@"ERROR: %@", error);
-            }
+        [Post createNoteAtLocation:location withContent:self.contentTextField.text block:^(Post *post) {
+            NSLog(@"Block: %@", post);
         }];
-        } else {
-            NSLog(@"No Location");
-        }
-}
-
-
-
-//    {
-//
-//        NSDictionary *params = @{
-//                                 @"post[content]" : self.content,
-//                                 @"post[lat]" : self.location,
-//                                 // it was this... : @(location.coordinate.latitude),
-//                                 @"post[lng]" : self.location
-//                                 //: @(location.coordinate.longitude)
-////                      [params setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"post[lat]"];
-////                      [params setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"post[lng]"];
-//                                 };
-//        [[APIClient sharedClient] postPath:@"/posts" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//            Post *post = [[Post alloc] initWithDictionary:responseObject];
-//            if (block) {
-//                block(post, nil);
-//            }
-//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//            if (block) {
-//                block(nil, error);
+    }
+    
+//        [post create:self.locationManager.location withContent:self.contentTextField.text withBlock:^(CGFloat progress) {
+//            [progressView setProgress:progress];
+//        } completion:^(BOOL success, NSError *error) {
+//            [progressView dismiss];
+//            if (success) {
+//                [self.navigationController popViewControllerAnimated:YES];
+//            } else {
 //                NSLog(@"ERROR: %@", error);
 //            }
 //        }];
-//    }
-
-//    [post saveWithProgress:^(CGFloat progress) {
-//        [progressView setProgress:progress];
-//    } completion:^(BOOL success, NSError *error) {
-//        [progressView dismiss];
-//        if (success) {
-//            [self.navigationController popViewControllerAnimated:YES];
 //        } else {
-//            NSLog(@"ERROR: %@", error);
+//            NSLog(@"No Location");
 //        }
-//    }];
-//}
+}
+
 
 @end

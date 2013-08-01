@@ -30,13 +30,6 @@
                                                         <constraint firstAttribute="width" constant="85" id="UJe-xd-jy9"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="choose" textAlignment="center" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="vAi-Nx-5l8">
-                                                    <rect key="frame" x="34" y="52" width="97" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLx-7e-wjL">
                                                     <rect key="frame" x="204" y="9" width="81" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

@@ -191,6 +191,29 @@ static NSString * NSStringFromDate(NSDate *date) {
    // [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
 }
 
++ (void)createNoteAtLocation:(CLLocation *)location
+                 withContent:(NSString *)content
+                       block:(void (^)(Post *post))block
+{
+    NSDictionary *parameters = @{ @"post": @{
+                                          @"lat": @(location.coordinate.latitude),
+                                          @"lng": @(location.coordinate.longitude),
+                                          @"content": content
+                                          }
+                                  };
+    
+    [[APIClient sharedClient] postPath:@"/posts" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Post *post = [[Post alloc] initWithDictionary:responseObject];
+        if (block) {
+            block(post);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            block(nil);
+        }
+    }];
+}
+
 
 - (void)notifyCreated {
     [[NSNotificationCenter defaultCenter] postNotificationName:PostCreatedNotification
