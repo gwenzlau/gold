@@ -1,16 +1,18 @@
 Gold::Application.routes.draw do
  # get "users/index"
 
-  get "users/show"
+  #get "users/show"
 
-  resources :posts 
+  resources :posts
 
 
   devise_for :users
-  #match 'users/:id'=> 'users#show'
+  resources :users
+  match 'users/:id'=> 'users#show', as: :user
+  #match 'users/' => 'users#index'
 
   root :to => 'pages#home'
-  match 'users/index' => 'users#index'
+  #match 'users/index' => 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

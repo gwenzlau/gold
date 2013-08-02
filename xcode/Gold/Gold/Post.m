@@ -100,6 +100,8 @@ static NSString * NSStringFromDate(NSDate *date) {
 - (void)updateFromJSON:(NSDictionary *)dictionary {
     self.content = [dictionary stringForKey:@"content"];
     
+    self.timestamp = [dictionary valueForKey:@"created_at"];
+    
     NSDictionary *photoDataDictionary = [dictionary objectForKey:@"photoData"];
     self.photoData = [photoDataDictionary valueForKey:@"photoData"];
     

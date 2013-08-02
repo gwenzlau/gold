@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
 	respond_to :json, :xml
 
-  respond_to :json, :xml
+  #respond_to :json, :xml
   def index
-  	@users = User.all
-  end
+  	#render :json => @users
+  	@users = User.order("created_at DESC")
 end
 
   def show
   	@user = User.find(params[:id])
-  	#@post = @user.posts.all
+    #respond_to do |format|
+     # format.html.fromat.json {render json: @user}
 
-  end
+  # end
+ end
+end

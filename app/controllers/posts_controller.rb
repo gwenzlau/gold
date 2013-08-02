@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-	skip_before_filter :verify_authenticity_token, :only => :create
+#	skip_before_filter :verify_authenticity_token, :only => :create
 
 	def index
 		@posts = Post.order("created_at DESC")
-		render :json => @posts
+		#render :json => @posts
 	end
 
 	def create

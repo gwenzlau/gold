@@ -74,7 +74,7 @@
     
     [self.view endEditing:YES];
     
-    ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
+  //  ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
     if (location) {
         
         [Post createNoteAtLocation:location withContent:self.contentTextField.text block:^(Post *post) {

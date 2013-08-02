@@ -10,7 +10,6 @@
 #import "IndexViewController.h"
 #import "Post.h"
 #import "Notifications.h"
-#import "DetailViewController.h"
 #import "SSPullToRefresh.h"
 #import "UIImageView+AFNetworking.h"
 #import "CreateUserViewController.h"
@@ -235,22 +234,17 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     Post *post = [self.posts objectAtIndex:indexPath.row];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.text = post.content;
-   // cell.detailTextLabel.text = @"posted by Grant at lat:39 lng:-120";
     cell.detailTextLabel.textColor=[UIColor grayColor];
-   // cell.detailTextLabel.text = NSStringFromCoordinate(post.location);
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"at (%f, %f)", post.location.coordinate.latitude,post.location.coordinate.longitude];
-//    cell.detailTextLabel.text = [self.dateFormatter stringFromDate.timestamp];
-   // cell.detailTextLabel.text = [item objectForKey:@"timestamp"];
-    NSData *photoData = [NSData dataWithBytes:(__bridge const void *)(post.photoData) length:photoData];
-    [[cell imageView] setImage:post.photoData];
-    if (photoData) {
-        [cell.imageView setImage:post.photoData];
-    } else {
-        cell.imageView.image = nil;
-    }
+    cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:10];
+
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"posted on %@ at (%f, %f)", post.timestamp,  (post.location.coordinate.latitude, post.location.coordinate.longitude)];
+    cell.imageView.image = [UIImage imageWithData:post.photoData];
+    
+    //[[cell imageView] setImage:post.photoData];
     
 //    NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
 //  //  UIImage *defaultImage = [UIImage imageNamed: nil /*@"marko-nophoto.png"*/];
