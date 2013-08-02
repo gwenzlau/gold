@@ -21,7 +21,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url
-    asset_path "coffee-nophoto.png"
+    asset_path ""
   end
 
   version :thumb do
