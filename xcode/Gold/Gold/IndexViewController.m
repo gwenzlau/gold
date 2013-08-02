@@ -5,7 +5,7 @@
 //  Created by Grant Wenzlau on 7/18/13.
 //  Copyright (c) 2013 marko. All rights reserved.
 //
-
+#import "APIClient.h"
 #import <CoreLocation/CoreLocation.h>
 #import "IndexViewController.h"
 #import "Post.h"
@@ -14,6 +14,7 @@
 #import "SSPullToRefresh.h"
 #import "UIImageView+AFNetworking.h"
 #import "CreateUserViewController.h"
+#import "ISO8601DateFormatter.h"
 
 static CLLocationDistance const kMapRegionSpanDistance = 5000;
 
@@ -57,6 +58,11 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     
     [self listenForCreatedPosts];
     [self loadPosts: [self getLocation]];
+    
+//    if (![[APIClient sharedClient] isAuthorized]) {
+//        CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] init];
+//        [self.navigationController pushViewController:createUserViewController animated:YES];
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -229,74 +235,39 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     Post *post = [self.posts objectAtIndex:indexPath.row];
     
-    NSDictionary *item = (NSDictionary *)[self.posts objectAtIndex:indexPath.row];
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.text = post.content;
-    //cell.detailTextLabel.text = post.location;
-    //cell.detailTextLabel.text = [item objectForKey:@"location"];
+   // cell.detailTextLabel.text = @"posted by Grant at lat:39 lng:-120";
+    cell.detailTextLabel.textColor=[UIColor grayColor];
+   // cell.detailTextLabel.text = NSStringFromCoordinate(post.location);
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"at (%f, %f)", post.location.coordinate.latitude,post.location.coordinate.longitude];
+//    cell.detailTextLabel.text = [self.dateFormatter stringFromDate.timestamp];
    // cell.detailTextLabel.text = [item objectForKey:@"timestamp"];
+
+    [[cell imageView] setImage:post.photoData];
     
-    NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
-    UIImage *defaultImage = [UIImage imageNamed: nil /*@"marko-nophoto.png"*/];
-    
-    if (imageUrl) {
-        [cell.imageView setImageWithURL:imageUrl
-                            placeholderImage:defaultImage];
-    } else {
-        cell.imageView.image = defaultImage;
-    }
+//    NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
+//  //  UIImage *defaultImage = [UIImage imageNamed: nil /*@"marko-nophoto.png"*/];
+//    
+//    if (imageUrl) {
+//        [cell.imageView setImageWithURL:imageUrl];
+//    } else {
+//        cell.imageView.image = nil;
+//    }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+ //    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
 //    Post *selectedPost = [self.posts objectAtIndex:indexPath];
 //    DetailViewController *postVC = [[DetailViewController alloc] initWithPost:selectedPost];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+ //   [self.navigationController pushViewController:detailViewController animated:YES];
     
-}
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Post *post = [self.posts objectAtIndex:indexPath.row];

@@ -26,9 +26,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     IndexViewController *viewController = [[IndexViewController alloc] init];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
-    CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] init];
-    UINavigationController *modalNavigationController = [[UINavigationController alloc] initWithRootViewController:createUserViewController];
-    [self.navigationController pushViewController:createUserViewController animated:NO];
+//    CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] init];
+//    UINavigationController *modalNavigationController = [[UINavigationController alloc] initWithRootViewController:createUserViewController];
+//    [self.navigationController pushViewController:createUserViewController animated:NO];
 
 //    [self.navigationController presentViewController:modalNavigationController animated:YES completion:nil];
     

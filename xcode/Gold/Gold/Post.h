@@ -26,10 +26,6 @@
 - (void)saveWithProgressAtLocation:(CLLocation *)location
                withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock;
 
-//- (void)saveWithProgress: (CLLocation *)location
-//               withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock;
-//- (void)saveWithCompletion:(void (^)(BOOL success, NSError *error))completionBlock;
-
 - (void)saveWithCompletionAtLocation:(CLLocation *)location
                  withBlock:(void (^)(BOOL success, NSError *error))completionBlock;
 

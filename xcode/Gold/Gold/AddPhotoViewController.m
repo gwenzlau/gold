@@ -11,7 +11,7 @@
 #import "ProgressView.h"
 #import <CoreLocation/CoreLocation.h>
 #import <AWSRuntime/AWSRuntime.h>
-#import "Constants.h"
+#import "APIClient.h"
 
 @interface AddPhotoViewController ()
 
@@ -145,46 +145,5 @@
         NSLog(@"No Location");
     }
  }
-
-
-
-#pragma mark backgroundThread
-
-- (void)processBackgroundThreadUpload:(NSData *)imageData
-{
-    [self performSelectorInBackground:@selector(processBackgroundThreadUploadInBackground:)
-                           withObject:imageData];
-}
-
-- (void)processBackgroundThreadUploadInBackground:(NSData *)imageData
-{
-    // Upload image data.  Remember to set the content type.
-    S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:PICTURE_NAME
-                                                              inBucket:[Constants pictureBucket]];
-    por.contentType = @"image/jpeg";
-    por.data        = imageData;
-    
-    // Put the image data into the specified s3 bucket and object.
-    S3PutObjectResponse *putObjectResponse = [self.s3 putObject:por];
-    [self performSelectorOnMainThread:@selector(showCheckErrorMessage:)
-                           withObject:putObjectResponse.error
-                        waitUntilDone:NO];
-}
-
-- (void)showCheckErrorMessage:(NSError *)error
-{
-    if(error != nil)
-    {
-        NSLog(@"Error: %@", error);
-      //  [self showAlertMessage:[error.userInfo objectForKey:@"message"] withTitle:@"Upload Error"];
-    }
-    else
-    {
-        NSLog(@"The image was uploaded to S3 succsefully.");
-  //      [self showAlertMessage:@"The image was successfully uploaded." withTitle:@"Upload Completed"];
-    }
-    
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-}
 
 @end

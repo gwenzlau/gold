@@ -38,6 +38,5 @@ Gold::Application.configure do
   #In production- Change host to actual HOST!
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  #for paperclip
-  paperclip.options[:command_path] = "/usr/local/bin/"
+  
 end
