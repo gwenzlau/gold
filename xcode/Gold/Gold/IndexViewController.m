@@ -244,8 +244,13 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"at (%f, %f)", post.location.coordinate.latitude,post.location.coordinate.longitude];
 //    cell.detailTextLabel.text = [self.dateFormatter stringFromDate.timestamp];
    // cell.detailTextLabel.text = [item objectForKey:@"timestamp"];
-
+    NSData *photoData = [NSData dataWithBytes:(__bridge const void *)(post.photoData) length:photoData];
     [[cell imageView] setImage:post.photoData];
+    if (photoData) {
+        [cell.imageView setImage:post.photoData];
+    } else {
+        cell.imageView.image = nil;
+    }
     
 //    NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
 //  //  UIImage *defaultImage = [UIImage imageNamed: nil /*@"marko-nophoto.png"*/];
