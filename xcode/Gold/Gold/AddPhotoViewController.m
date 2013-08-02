@@ -10,7 +10,6 @@
 #import "Post.h"
 #import "ProgressView.h"
 #import <CoreLocation/CoreLocation.h>
-#import <AWSRuntime/AWSRuntime.h>
 #import "APIClient.h"
 
 @interface AddPhotoViewController ()
@@ -24,7 +23,6 @@
 
 @implementation AddPhotoViewController
 
-@synthesize s3 = _s3;
 
 - (void)viewDidLoad
 {
