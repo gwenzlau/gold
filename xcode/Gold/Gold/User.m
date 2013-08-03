@@ -36,7 +36,7 @@
                                  @"password": password
                                  };
     
-    [[APIClient sharedClient] postPath:@"/users" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] postPath:@"/users/sign_up" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         User *user = [[User alloc] initWithDictionary:responseObject];
         
         if (block) {

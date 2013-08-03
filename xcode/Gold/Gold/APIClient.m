@@ -42,9 +42,9 @@
     return self;
 }
 
-//-(BOOL)isAuthorized {
-//    return [[_user objectForKey:@"IdUser"] intValue]>0;
-//}
+-(BOOL)isAuthorized {
+    return [[_user objectForKey:@"IdUser"] intValue]>0;
+}
 
 //-(void)commandWithParams:(NSMutableDictionary *)params onCompletion:(JSONResponseBlock)completionBlock {
 //    NSData* uploadFile = nil;

@@ -13,6 +13,7 @@
 
 @interface AddNoteViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *contentTextField;
+@property (weak, nonatomic) IBOutlet UITextView *textCountTextView;
 
 
 @property (strong) CLLocationManager *locationManager;
@@ -20,6 +21,7 @@
 @end
 
 @implementation AddNoteViewController
+@synthesize textCountTextView;
 
 - (void)viewDidLoad
 {
@@ -68,9 +70,15 @@
     //CLLocation *location = [locations objectAtIndex:0];
     CLLocation * location = [locationManager location];
 
-    
+
     Post *post = [[Post alloc] init];
     post.content = self.contentTextField.text;
+    
+    UITextField *contentTextField = (UITextField *)sender;
+    int maxChars = 140;
+    int charsLeft = maxChars - [contentTextField.text length];
+    
+    textCountTextView.text = [NSString stringWithFormat:@"%d characters remaining.",charsLeft];
     
     [self.view endEditing:YES];
     

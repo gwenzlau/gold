@@ -225,9 +225,9 @@
 			children = (
 				A4B518061798411600DC0C7A /* IndexViewController.h */,
 				A4B518071798411600DC0C7A /* IndexViewController.m */,
-				A4B518311798800900DC0C7A /* AddNoteStoryboard.storyboard */,
 				A4B518331798802700DC0C7A /* AddNoteViewController.h */,
 				A4B518341798802700DC0C7A /* AddNoteViewController.m */,
+				A4B518311798800900DC0C7A /* AddNoteStoryboard.storyboard */,
 				A4B5182A1798585F00DC0C7A /* AddPhotoViewController.h */,
 				A4B5182B1798585F00DC0C7A /* AddPhotoViewController.m */,
 				A4B5182D1798586D00DC0C7A /* AddPhotoStoryboard.storyboard */,
