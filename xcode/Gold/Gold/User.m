@@ -31,9 +31,11 @@
                       password:(NSString *)password
                          block:(void (^)(User *user))block
 {
-    NSDictionary *parameters = @{@"username": username,
+    NSDictionary *parameters = @{ @"user": @{
+                                  @"username": username,
                                  @"email": email,
                                  @"password": password
+                                  }
                                  };
     
     [[APIClient sharedClient] postPath:@"/users/sign_up" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {

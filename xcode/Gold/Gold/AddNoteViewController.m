@@ -74,15 +74,15 @@
     Post *post = [[Post alloc] init];
     post.content = self.contentTextField.text;
     
-    UITextField *contentTextField = (UITextField *)sender;
-    int maxChars = 140;
-    int charsLeft = maxChars - [contentTextField.text length];
-    
-    textCountTextView.text = [NSString stringWithFormat:@"%d characters remaining.",charsLeft];
+//    UITextField *contentTextField = (UITextField *)sender;
+//    int maxChars = 140;
+//    int charsLeft = maxChars - [contentTextField.text length];
+//    
+//    textCountTextView.text = [NSString stringWithFormat:@"%d characters remaining.",charsLeft];
     
     [self.view endEditing:YES];
     
-  //  ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
+    ProgressView *progressView = [ProgressView presentInWindow:self.view.window];
     if (location) {
         
         [Post createNoteAtLocation:location withContent:self.contentTextField.text block:^(Post *post) {
@@ -90,7 +90,7 @@
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }
-    
+    [progressView dismiss];
 //        [post create:self.locationManager.location withContent:self.contentTextField.text withBlock:^(CGFloat progress) {
 //            [progressView setProgress:progress];
 //        } completion:^(BOOL success, NSError *error) {

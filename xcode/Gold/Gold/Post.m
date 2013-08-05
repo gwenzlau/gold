@@ -165,34 +165,6 @@ static NSString * NSStringFromDate(NSDate *date) {
     [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
 }
 
-//- (void)createPostAtLocation:(CLLocation *)location
-//                 withContent:(NSString *)content
-//                       withBlock:(void (^)(CGFloat))progressBlock completion:(void (^)(BOOL, NSError *))completionBlock {
-//    NSDictionary *params = @{
-//                             @"post[content]" : self.content,
-//                             @"post[lat]": @(location.coordinate.latitude),
-//                             @"post[lng]": @(location.coordinate.longitude)
-//                             
-//                             };
-//    
-//    [[APIClient sharedClient] postPath:@"/posts" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        Post *post = [[Post alloc] initWithDictionary:responseObject];
-//        if (operation.response.statusCode == 200 || operation.response.statusCode == 201) {
-//            NSLog(@"Created, %@", responseObject);
-//            NSDictionary *updatedPost = [responseObject objectForKey:@"post"];
-//            [self updateFromJSON:updatedPost];
-//            [self notifyCreated];
-//            completionBlock(YES, nil);
-//        } else {
-//            completionBlock(NO, nil);
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        completionBlock(NO, error);
-//    }];
-//    
-//   // [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
-//}
-
 + (void)createNoteAtLocation:(CLLocation *)location
                  withContent:(NSString *)content
                        block:(void (^)(Post *post))block
@@ -215,7 +187,6 @@ static NSString * NSStringFromDate(NSDate *date) {
         }
     }];
 }
-
 
 - (void)notifyCreated {
     [[NSNotificationCenter defaultCenter] postNotificationName:PostCreatedNotification

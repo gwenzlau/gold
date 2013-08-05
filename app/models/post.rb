@@ -14,13 +14,11 @@ class Post < ActiveRecord::Base
 def as_json(options = nil)
 	{
 		:content => self.content,
-		:postid => id,
+		:postid => self.id,
 		#:user => submitted_by,
 		:lat => self.lat,
 		:lng => self.lng,
 		:content => self.content,
-		:userid => id,
-		
 
 		:photo_urls => {
 			:original => self.photo.url,

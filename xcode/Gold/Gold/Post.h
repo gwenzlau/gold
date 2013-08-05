@@ -30,9 +30,6 @@
 - (void)saveWithCompletionAtLocation:(CLLocation *)location
                  withBlock:(void (^)(BOOL success, NSError *error))completionBlock;
 
-//- (void)createPostAtLocation:(CLLocation *)location
-//                 withContent:(NSString *)content
-//                   withBlock:(void (^)(CGFloat progress))progressBlock completion:(void (^)(BOOL success, NSError *error))completionBlock;
 
 + (void)createNoteAtLocation:(CLLocation *)location
                  withContent:(NSString *)content
