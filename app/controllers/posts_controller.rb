@@ -5,13 +5,14 @@ class PostsController < ApplicationController
 	def index
    #lat, lng = params[:lat], params[:lng]
     #if lat and lng
-      @posts = Post.order("created_at DESC")
+      @posts = Post.order ("created_at DESC")
+      render :json => @posts
       #.nearby(lat.to_f, lng.to_f)
-      #respond_with({:posts => @posts})
-   # respond_to do |format|
-    #  format.html
-     # format.json #{render json: @post }
-    @end
+     # respond_with({:posts => @posts})
+    #respond_to do |format|
+     # format.html
+      #format.json #{render json: @post }
+   # end
    
     #else
      # respond_with({:message => "Invalid or missing lat/lng params"}, :status => 406)

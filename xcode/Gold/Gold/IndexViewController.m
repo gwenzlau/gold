@@ -240,7 +240,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     cell.textLabel.text = post.content;
     cell.detailTextLabel.textColor=[UIColor lightGrayColor];
     cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:9];
-
+   
   //  cell.detailTextLabel.text = [NSString stringWithFormat:@"posted on %@ at (%f, %f)", post.timestamp,  (post.location.coordinate.latitude, post.location.coordinate.longitude)];
     
   //  cell.imageView.image = [UIImage imageWithData:post.photoData];
