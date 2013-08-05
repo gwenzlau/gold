@@ -163,6 +163,7 @@ static NSString * NSStringFromDate(NSDate *date) {
     }];
     
     [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
+    [operation start];
 }
 
 //- (void)createPostAtLocation:(CLLocation *)location

@@ -7,9 +7,9 @@
 //
 
 #import "APIClient.h"
-#define BASE_URL @"http://localhost:3000/"
+//#define BASE_URL @"http://localhost:3000/"
 
-//#define BASE_URL @"http://mysterious-hollows-5550.herokuapp.com/"
+#define BASE_URL @"http://mysterious-hollows-5550.herokuapp.com/"
 
 @implementation APIClient
 
@@ -46,34 +46,6 @@
     return [[_user objectForKey:@"IdUser"] intValue]>0;
 }
 
-//-(void)commandWithParams:(NSMutableDictionary *)params onCompletion:(JSONResponseBlock)completionBlock {
-//    NSData* uploadFile = nil;
-//    if([params objectForKey:@"photoData"]) {
-//        uploadFile = (NSData*)[params objectForKey:@"photoData"];
-//        [params removeObjectForKey:@"photoData"];
-//    }
-//    NSMutableURLRequest *apiRequest =
-//    [self multipartFormRequestWithMethod:@"POST"
-//                                    path:@"/posts"
-//                              parameters:params
-//               constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//                   if (uploadFile) {
-//                       [formData appendPartWithFileData:uploadFile
-//                                                   name:@"photoData"
-//                                               fileName:@"photo.jpg"
-//                                               mimeType:@"image/jpeg"];
-//                   }
-//               }];
-//    
-//    AFJSONRequestOperation* operation = [[AFJSONRequestOperation alloc] initWithRequest:apiRequest];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        //success
-//        completionBlock(responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        completionBlock([NSDictionary dictionaryWithObject:[error localizedDescription] forKey:@"error"]);
-//    }];
-//    
-//    [operation start];
-//}
+
 
 @end
