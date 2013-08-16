@@ -58,10 +58,10 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     [self listenForCreatedPosts];
     [self loadPosts: [self getLocation]];
     
-//    if (![[APIClient sharedClient] isAuthorized]) {
-//        CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] init];
-//        [self.navigationController pushViewController:createUserViewController animated:YES];
-//    }
+    if (![[APIClient sharedClient] isAuthorized]) {
+        CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] init];
+        [self.navigationController pushViewController:createUserViewController animated:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -242,7 +242,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 //        NSString *dateString = [dateFormatter stringFromDate:date];
 //        cell.detailTextLabel.text = dateString;
    // CLLocationCoordinate2DMake(post.location.coordinate.latitude, post.location.coordinate.longitude);
-    NSLog(NSString stringWithFormat:(%f, %f), post.location.coordinate.latitude, post.location.coordinate.longitude);
+ //   NSLog(NSString stringWithFormat:(%f, %f), post.location.coordinate.latitude, post.location.coordinate.longitude);
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.numberOfLines = 0;

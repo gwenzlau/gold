@@ -11,6 +11,8 @@ class Post < ActiveRecord::Base
   limit(64)
 }
 
+belongs_to :user
+
 # def as_json(options = nil)
 # 	{
 # 		:content => self.content,

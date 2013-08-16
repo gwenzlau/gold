@@ -5,10 +5,11 @@ class UsersController < ApplicationController
   def index
   	#render :json => @users
   	@users = User.order("created_at DESC")
-end
+  end
 
   def show
   	@user = User.find(params[:id])
+    @posts = @user.posts.page
     #respond_to do |format|
      # format.html.fromat.json {render json: @user}
 

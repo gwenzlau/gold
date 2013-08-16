@@ -10,12 +10,12 @@
 
 @interface User : NSObject
 
-@property (strong) NSString *username;
+@property (strong) NSString *signature;
 @property (strong) NSString *email;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
-+ (void)createUserWithUsername:(NSString *)username
++ (void)createUserWithUsername:(NSString *)signature
                          email:(NSString *)email
                       password:(NSString *)password
                          block:(void (^)(User *user))block;

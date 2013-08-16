@@ -23,8 +23,18 @@ class PostsController < ApplicationController
 		#render :json => @posts
 	end
 
+  def new
+    @post = current_user.posts.new
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @post }
+    end
+  end
+
+
 	def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.new(params[:post])
     if @post.save
       render :json => {
         :success => true,
@@ -46,4 +56,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to posts_url}
+      format.json { head :no_content }
+    end
+  end
 end
