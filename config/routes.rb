@@ -8,6 +8,7 @@ Gold::Application.routes.draw do
 
   devise_for :users
   resources :users
+  
   match 'users/:id'=> 'users#show', as: :user
   #match 'users/' => 'users#index'
 
