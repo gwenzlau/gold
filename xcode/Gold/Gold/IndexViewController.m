@@ -132,11 +132,11 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
         NSLog(@"You are at %@", location);
         [Post fetchNearbyPosts:location withBlock:^(NSArray *posts, NSError *error) {
             if (error) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Couldn't find any posts at this Location", nil) message:[error localizedFailureReason] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil] show];
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Weird. Couldn't find any posts around here. You should start something.", nil) message:[error localizedFailureReason] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil] show];
             } else {
                 self.posts = posts;
         [self.tableView reloadData];
-       // NSLog(@"Recieved %d posts", posts.count);
+       
         [manager stopUpdatingLocation];
     }
         }];
@@ -157,7 +157,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
                     
         if (posts) {
             NSLog(@"Recieved %d posts", posts.count);
-            NSLog(@"And those posts are located near you %@", location);
+            NSLog(@"And those posts are located near %@", location);
             self.posts = [NSMutableArray arrayWithArray:posts];
             [self.tableView reloadData];
             [self.tableView setNeedsLayout];
@@ -234,19 +234,32 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     Post *post = [self.posts objectAtIndex:indexPath.row];
     
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"EEE, d MMM yyyy, hh:mm aaa"];
+//    NSDate *date = nil;
+//    
+//        date = [NSDate date];
+//        NSString *dateString = [dateFormatter stringFromDate:date];
+//        cell.detailTextLabel.text = dateString;
+   // CLLocationCoordinate2DMake(post.location.coordinate.latitude, post.location.coordinate.longitude);
+    NSLog(NSString stringWithFormat:(%f, %f), post.location.coordinate.latitude, post.location.coordinate.longitude);
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.text = post.content;
     cell.detailTextLabel.textColor=[UIColor lightGrayColor];
     cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:9];
-   
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"posted on %@ at (%f, %f)", post.timestamp,  (post.location.coordinate.latitude, post.location.coordinate.longitude)];
     
-  //  cell.imageView.image = [UIImage imageWithData:post.photoData];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"posted on %@ at (%f, %f)",
+                                 post.timestamp,
+                                 post.location.coordinate.latitude,
+                                 post.location.coordinate.longitude];
+    
+    cell.imageView.image = [UIImage imageWithData:post.photoData];
    
 //    NSURL *imageUrl = [NSURL URLWithString:post.thumbnailUrl];
-//  //  UIImage *defaultImage = [UIImage imageNamed: nil /*@"marko-nophoto.png"*/];
+//    UIImage *defaultImage = [UIImage imageNamed: @"marko-nophoto.png"];
 //    
 //    if (imageUrl) {
 //        [cell.imageView setImageWithURL:imageUrl];

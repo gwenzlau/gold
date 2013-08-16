@@ -102,14 +102,14 @@ static NSString * NSStringFromDate(NSDate *date) {
     
     self.timestamp = [dictionary valueForKey:@"created_at"];
     
-    NSDictionary *photoDataDictionary = [dictionary objectForKey:@"photoData"];
-    self.photoData = [photoDataDictionary valueForKey:@"photoData"];
+//    NSDictionary *photoDataDictionary = [dictionary objectForKey:@"photoData"];
+//    self.photoData = [photoDataDictionary valueForKey:@"photoData"];
     
     NSDictionary *photoDictionary = [dictionary objectForKey:@"photo"];
     self.largeUrl = [photoDictionary stringForKey:@"url"];
     
    // NSString *photoKey = IsRetina() ? @"thumb_retina" : @"thumb";
-    NSDictionary *thumbDictionary = [photoDictionary objectForKey:@"thumbnailUrl"];
+    NSDictionary *thumbDictionary = [photoDictionary objectForKey:@"thumb"];
     self.thumbnailUrl = [thumbDictionary stringForKey:@"url"];
     
     NSDictionary *locationDictionary = [dictionary objectForKey:@"location"];
@@ -163,7 +163,7 @@ static NSString * NSStringFromDate(NSDate *date) {
     }];
     
     [[APIClient sharedClient] enqueueHTTPRequestOperation:operation];
-    [operation start];
+
 }
 
 //- (void)createPostAtLocation:(CLLocation *)location
