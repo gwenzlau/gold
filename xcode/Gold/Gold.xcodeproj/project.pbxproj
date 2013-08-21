@@ -33,6 +33,8 @@
 		A4B518321798800900DC0C7A /* AddNoteStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B518311798800900DC0C7A /* AddNoteStoryboard.storyboard */; };
 		A4B518351798802700DC0C7A /* AddNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518341798802700DC0C7A /* AddNoteViewController.m */; };
 		A4B5183A1799BA0000DC0C7A /* NSDictionary+NonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */; };
+		A4C15DD117C534300025AC79 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C15DCF17C534300025AC79 /* LoginViewController.m */; };
+		A4C15DD217C534300025AC79 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C15DD017C534300025AC79 /* LoginViewController.xib */; };
 		DF9AD7300A64462FAA25CA3C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225FE81F6304353B87B3356 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,9 @@
 		A4B518341798802700DC0C7A /* AddNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNoteViewController.m; path = ../../Gold/Gold/AddNoteViewController.m; sourceTree = "<group>"; };
 		A4B518381799BA0000DC0C7A /* NSDictionary+NonNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNull.h"; sourceTree = "<group>"; };
 		A4B518391799BA0000DC0C7A /* NSDictionary+NonNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNull.m"; sourceTree = "<group>"; };
+		A4C15DCE17C534300025AC79 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../../Gold/Gold/LoginViewController.h; sourceTree = "<group>"; };
+		A4C15DCF17C534300025AC79 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../../Gold/Gold/LoginViewController.m; sourceTree = "<group>"; };
+		A4C15DD017C534300025AC79 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = ../../Gold/Gold/LoginViewController.xib; sourceTree = "<group>"; };
 		F8A6CBD1CFE44E888B7BD060 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -238,6 +243,9 @@
 		A4E513EA179DF41E001F8D92 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				A4C15DCE17C534300025AC79 /* LoginViewController.h */,
+				A4C15DCF17C534300025AC79 /* LoginViewController.m */,
+				A4C15DD017C534300025AC79 /* LoginViewController.xib */,
 				A496128417A8508F00BCD15B /* CreateUserViewController.h */,
 				A496128517A8508F00BCD15B /* CreateUserViewController.m */,
 				A496128617A8508F00BCD15B /* CreateUserViewController.xib */,
@@ -303,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4C15DD217C534300025AC79 /* LoginViewController.xib in Resources */,
 				A46A7DE217983ED9002937F3 /* InfoPlist.strings in Resources */,
 				A46A7DEA17983ED9002937F3 /* Default.png in Resources */,
 				A46A7DEC17983ED9002937F3 /* Default@2x.png in Resources */,
@@ -359,6 +368,7 @@
 				A46A7DE417983ED9002937F3 /* main.m in Sources */,
 				A46A7DE817983ED9002937F3 /* AppDelegate.m in Sources */,
 				A496128717A8508F00BCD15B /* CreateUserViewController.m in Sources */,
+				A4C15DD117C534300025AC79 /* LoginViewController.m in Sources */,
 				A4B518081798411600DC0C7A /* IndexViewController.m in Sources */,
 				A4B5180B1798434F00DC0C7A /* Post.m in Sources */,
 				A4B5180E179843C500DC0C7A /* APIClient.m in Sources */,

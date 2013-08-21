@@ -20,4 +20,9 @@
                       password:(NSString *)password
                          block:(void (^)(User *user))block;
 
++ (void)loginUser:(NSString *)signature
+                         email:(NSString *)email
+                      password:(NSString *)password
+                         block:(void (^)(User *user))block;
+
 @end

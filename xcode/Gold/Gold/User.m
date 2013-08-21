@@ -52,4 +52,30 @@
     }];
 }
 
++ (void)loginUser:(NSString *)signature
+                         email:(NSString *)email
+                      password:(NSString *)password
+                         block:(void (^)(User *user))block
+{
+    NSDictionary *parameters = @{ @"user": @{
+                                    //      @"signature": signature,
+                                          @"email": email,
+                                          @"password": password
+                                          }
+                                  };
+    
+    [[APIClient sharedClient] postPath:@"/users/sign_in" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        User *user = [[User alloc] initWithDictionary:responseObject];
+        
+        if (block) {
+            block(user);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (block) {
+            block(nil);
+        }
+    }];
+}
+
 @end

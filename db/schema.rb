@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816185247) do
+ActiveRecord::Schema.define(:version => 20130821173046) do
 
 # Could not dump table "posts" because of following StandardError
 #   Unknown type 'photo' for column 'photo_url'
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130816185247) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "signature"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

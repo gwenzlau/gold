@@ -6,7 +6,7 @@ Gold::Application.routes.draw do
   resources :posts
 
 
-  devise_for :users
+  devise_for(:users, :controllers => { :sessions => "sessions" })
   resources :users
   
   match 'users/:id'=> 'users#show', as: :user

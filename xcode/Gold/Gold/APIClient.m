@@ -7,9 +7,8 @@
 //
 
 #import "APIClient.h"
-//#define BASE_URL @"http://localhost:3000/"
-
-#define BASE_URL @"http://mysterious-hollows-5550.herokuapp.com/"
+#define BASE_URL @"http://localhost:3000/"
+//#define BASE_URL @"http://mysterious-hollows-5550.herokuapp.com/"
 
 @implementation APIClient
 
@@ -34,10 +33,10 @@
 	[self setDefaultHeader:@"Accept" value:@"application/json"];
     self.parameterEncoding = AFJSONParameterEncoding;
     
-//    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"oaccessToken"];
-//    NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"orefreshToken"];
-//    
-//    [self setAuthorizationWithToken:accessToken refreshToken:refreshToken];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"oaccessToken"];
+    NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"orefreshToken"];
+    
+  //  [self setAuthorizationWithToken:accessToken refreshToken:refreshToken];
     
     return self;
 }

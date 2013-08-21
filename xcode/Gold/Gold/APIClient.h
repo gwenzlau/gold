@@ -9,7 +9,7 @@
 #import "AFHTTPClient.h"
 
 ////API call completion block with result as json
-//typedef void (^JSONResponseBlock)(NSDictionary* json);
+typedef void (^JSONResponseBlock)(NSDictionary* json);
 
 @interface APIClient : AFHTTPClient
 
@@ -21,6 +21,6 @@
 -(BOOL)isAuthorized;
 
 ////send API command to server
-//-(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(JSONResponseBlock)completionBlock;
+-(void)commandWithParams:(NSMutableDictionary*)params onCompletion:(JSONResponseBlock)completionBlock;
 
 @end

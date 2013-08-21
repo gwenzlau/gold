@@ -1,27 +1,27 @@
 //
-//  CreateUserViewController.m
+//  LoginViewController.m
 //  Gold
 //
-//  Created by Grant Wenzlau on 7/30/13.
+//  Created by Grant Wenzlau on 8/21/13.
 //  Copyright (c) 2013 marko. All rights reserved.
 //
 
-#import "CreateUserViewController.h"
+#import "LoginViewController.h"
 #import "User.h"
 
-@interface CreateUserViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation CreateUserViewController
+@implementation LoginViewController
 
-#pragma mark - UIViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
-    self.title = NSLocalizedString(@"Signup", nil);
+    self.title = NSLocalizedString(@"Login", nil);
 }
+
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -45,28 +45,23 @@
 
 #pragma mark - IBAction
 
-- (IBAction)signUp:(id)sender {
-    [User createUserWithUsername:self.usernameTextField.text email:self.emailTextField.text password:self.passwordTextField.text block:^(User *user) {
-        NSLog(@"User: %@", user);
-        
+- (IBAction)loginButton:(id)sender {
+    [User loginUser:self.emailTextField email:self.emailTextField.text password:self.passwordTextField.text
+              block:^(User *user) {
+        NSLog(@"User logged in!");
         [self.navigationController popViewControllerAnimated:YES];
-        
     }];
 }
 
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if ([textField isEqual:self.usernameTextField]) {
-        [self.emailTextField becomeFirstResponder];
-    } else if ([textField isEqual:self.emailTextField]) {
+    if ([textField isEqual:self.emailTextField]) {
         [self.passwordTextField becomeFirstResponder];
     } else {
-        [self signUp:textField];
+        [self loginButton:textField];
     }
     
     return YES;
 }
-
 @end
-

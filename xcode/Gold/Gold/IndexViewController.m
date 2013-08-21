@@ -13,6 +13,7 @@
 #import "SSPullToRefresh.h"
 #import "UIImageView+AFNetworking.h"
 #import "CreateUserViewController.h"
+#import "LoginViewController.h"
 #import "ISO8601DateFormatter.h"
 
 static CLLocationDistance const kMapRegionSpanDistance = 5000;
@@ -59,8 +60,8 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     [self loadPosts: [self getLocation]];
     
     if (![[APIClient sharedClient] isAuthorized]) {
-        CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] init];
-        [self.navigationController pushViewController:createUserViewController animated:YES];
+        LoginViewController *loginViewController = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewController animated:YES];
     }
 }
 
@@ -279,6 +280,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
  //   [self.navigationController pushViewController:detailViewController animated:YES];
     
 //}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Post *post = [self.posts objectAtIndex:indexPath.row];
