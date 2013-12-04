@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   respond_to :json, :xml
   
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 #	skip_before_filter :verify_authenticity_token, :only => :create
 
 	def index
@@ -36,12 +36,13 @@ class PostsController < ApplicationController
 
 
 	def create
-    @post = current_user.posts.new(params[:post])
+    @post = current_user.posts.new(post_params)
     if @post.save
-      render :json => {
-        :success => true,
-        :post => @post
-      }
+      redirect_to current_user
+     # render :json => {
+      #  :success => true,
+      #  :post => @post
+      #}
     else
       render :json => {
         :success => false,
@@ -66,5 +67,11 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url}
       format.json { head :no_content }
     end
+  end
+
+  private
+    
+  def post_params
+    params.require(:post).permit(:content, :lat, :lng, :photo, :submitted_by)
   end
 end

@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "IndexViewController.h"
 #import "Post.h"
+#import "User.h"
 #import "Notifications.h"
 #import "SSPullToRefresh.h"
 #import "UIImageView+AFNetworking.h"
@@ -133,7 +134,7 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
         NSLog(@"You are at %@", location);
         [Post fetchNearbyPosts:location withBlock:^(NSArray *posts, NSError *error) {
             if (error) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Weird. Couldn't find any posts around here. You should start something.", nil) message:[error localizedFailureReason] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil] show];
+//            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Weird. Couldn't find any posts around here. You should start something.", nil) message:[error localizedFailureReason] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil] show];
             } else {
                 self.posts = posts;
         [self.tableView reloadData];
@@ -163,11 +164,11 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
             [self.tableView reloadData];
             [self.tableView setNeedsLayout];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"ERROR"
-                                        message:@"Couldn't fetch nearby posts."
-                                       delegate:nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil] show];
+//            [[[UIAlertView alloc] initWithTitle:@"ERROR"
+//                                        message:@"Couldn't fetch nearby posts."
+//                                       delegate:nil
+//                              cancelButtonTitle:@"OK"
+//                              otherButtonTitles:nil] show];
         }
                  }];
 }
@@ -252,7 +253,8 @@ static CLLocationDistance const kMapRegionSpanDistance = 5000;
     cell.detailTextLabel.textColor=[UIColor lightGrayColor];
     cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:9];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"posted on %@ at (%f, %f)",
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"posted by %@ on %@ at (%f, %f)",
+                      //           post.usersig
                                  post.timestamp,
                                  post.location.coordinate.latitude,
                                  post.location.coordinate.longitude];

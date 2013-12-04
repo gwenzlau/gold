@@ -128,7 +128,8 @@ static NSString * NSStringFromDate(NSDate *date) {
     NSDictionary *params = @{
                              @"post[content]" : self.content,
                              @"post[lat]": @(location.coordinate.latitude),
-                             @"post[lng]": @(location.coordinate.longitude)
+                             @"post[lng]": @(location.coordinate.longitude),
+                        //     @"post[user]": self.user
                              
                              };
     

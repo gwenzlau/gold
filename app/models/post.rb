@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
 	COORDINATE_DELTA = 0.05
 
-  attr_accessible :content, :lat, :lng, :photo, :submitted_by
+ 
   mount_uploader :photo, PhotoUploader
 
 

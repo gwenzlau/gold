@@ -3,12 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  		 :token_authenticatable, 
-         #:recoverable, 
-         :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :signature
-  # attr_accessible :title, :body
 
-  has_many :posts, :dependent => :destroy
+  has_many :posts, :dependent => :destroy 
+
+  def public_params
+    {
+      id: id,
+      signature: signature
+    }
+  end
 end

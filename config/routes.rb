@@ -6,10 +6,12 @@ Gold::Application.routes.draw do
   resources :posts
 
 
-  devise_for(:users, :controllers => { :sessions => "sessions" })
-  resources :users
+  #devise_for(:users, :controllers => { :sessions => "sessions" })
+  devise_for :users
+  resources :users, :only => [:show, :index]
   
-  match 'users/:id'=> 'users#show', as: :user
+  get 'users/:id', to: 'users#show'
+  get 'users', to: 'users#index'
   #match 'users/' => 'users#index'
 
   root :to => 'pages#home'
@@ -61,7 +63,13 @@ Gold::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
+  
+ # namespace :api do
+  #  namespace :v1 do
+   #   resources :tokens, :only => [:create, :destroy]
+   # end
+ # end
+  
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'

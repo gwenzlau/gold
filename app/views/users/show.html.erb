@@ -1,1 +1,9 @@
-<h1><%= @user.signature %></h1>
+<h1 align="center"><%= @user.signature %></h1>
+
+<% @post.each do |post| %>
+<%= link_to post.content, post_path %> 
+<% if current_user == @post.user %>
+				<%= link_to 'Edit', edit_post_path(@post) %> |
+			<% end %>
+<hr>
+<% end %>

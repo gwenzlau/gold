@@ -4,12 +4,9 @@
 //
 //  Created by Grant Wenzlau on 7/30/13.
 //  Copyright (c) 2013 marko. All rights reserved.
-//
 
 #import "User.h"
-
 #import "APIClient.h"
-
 #import "NSDictionary+NonNull.h"
 
 @implementation User
