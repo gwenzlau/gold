@@ -3,6 +3,8 @@
 <%= simple_form_for(@post, html: { class: "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
   <%= f.input :content, :placeholder => "leave your mark" %>
+  <%= f.input :lat, :placeholder => "lat" %>
+  <%= f.input :lng, :placeholder => "lng" %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 <br>
   <div class="form-actions">

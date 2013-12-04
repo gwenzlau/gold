@@ -1,0 +1,15 @@
+<h1>Edit the post</h1>
+
+<%= simple_form_for(@post, html: { class: "form-horizontal"}) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :content, as: :text, input_html: { rows: "3" } %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>
