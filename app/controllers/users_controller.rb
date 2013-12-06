@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      fromat.json {render json: @users}
+      format.json {render json: @users}
     end
   end
 
@@ -15,5 +15,6 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
 
     @post = Post.where(:user_id => params[:id])
+    
  end
 end
